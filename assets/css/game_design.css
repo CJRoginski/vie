@@ -1,0 +1,3159 @@
+/* Normal CSS file */
+
+html { -ms-user-select:none; /* For Edge */  -webkit-user-select:none; /* For Safari and Chrome */  -moz-user-select:none; /* For Firefox */  -o-user-select:none; /* For Opera */  user-select:none; /* Standard */ }
+body { width:100%; max-width:100%; height:100%; max-height:100%; margin:0 auto; position:fixed; left:0; top:0; background-color:burlywood; }
+
+#startup { display:flex; width:100%; height:100%; align-items:center; justify-content:center; }
+#startup h3 { margin:0; margin-left:auto; margin-right:auto; padding:0; position:absolute; top:15px; font-family:Londrina Solid; font-size:60px; font-weight:300; cursor:default; }
+
+#titlescreen { display:block; width:100%; height:100%; background-color:burlywood; overflow:hidden; }
+#titlescreen h1 { margin:0; padding-top:0; padding-left:15px; font-family:Londrina Solid; font-size:130px; font-weight:300; cursor:default; }
+#titlescreen h2 { margin:0; padding:0; font-family:Vast Shadow; font-size:30px; font-weight:100; cursor:default; }
+#titlescreen h4 { margin-bottom:10px; text-align:center; font-family:Ubuntu; font-size:30px; cursor:default; }
+#titlescreen h6 { margin-top:5px; margin-bottom:5px; text-align:right; color:gray; font-family:Ubuntu; font-size:10px; font-weight:100; cursor:default; }
+#titlescreen p { font-family:Ubuntu; font-size:17px; color:#F0F0F0; cursor:default; }
+#titlescreen a { font-family:Ubuntu; color:gray; text-decoration:none; }
+#titlescreen a:hover { text-decoration:underline; }
+#titlescreen a:active, #titlescreen a:visited { color:gray; text-decoration:none; }
+
+#game { display:none; width:100%; height:100%; background-color:burlywood; overflow:hidden; }
+#game h1 { margin:0; padding-top:20px; padding-left:15px; font-family:Ubuntu; line-height:1; font-size:50px; font-weight:400; cursor:default; }
+#game h3 { margin:0; padding-top:5px; padding-left:15px; line-height:15px; font-family:Ubuntu; font-size:20px; font-weight:100; cursor:default; }
+#game h4 { margin:0; padding-top:10px; font-family:Ubuntu; text-align:center; font-size:20px; font-weight:600; cursor:default; }
+#game h5 { margin:0; padding-top:15px; line-height:15px; font-family:Ubuntu; font-size:15px; font-weight:100; cursor:default; }
+#game h6 { margin:0; padding-top:15px; font-family:Ubuntu; font-size:15px; font-weight:900; cursor:default; }
+#game header { width:100%; max-width:100%; position:fixed; top:0; left:0; background-color:transparent; z-index:50; }
+
+* {
+	box-sizing: border-box;
+}
+
+
+/* If online */
+#online {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+}
+#online #message {
+	width: 45%;
+	background-color: #FFFFF0;
+}
+#online #message h1 {
+	font-family: Ubuntu;
+	text-align: center;
+}
+#online #message h3 {
+	font-family: Ubuntu;
+	text-align: center;
+}
+#online #message button {
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 50px;
+	margin-right: 50px;
+	outline: none;
+	border: none;
+	background-color: transparent;
+	font-family: Ubuntu;
+	font-size: 30px;
+	text-decoration: none;
+	cursor: pointer;
+}
+#online #message button #aniunderline {
+	height: 2px;
+}
+
+/* Pop-ups to alert the player of environmental flaws that need to be fixed */
+.flaw {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: burlywood;
+	z-index: 300;
+}
+.flaw #message {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.75);
+	align-items: center;
+	justify-content: center;
+}
+.flaw #message #container {
+	width: 45%;
+	background-color: #FFFFF0;
+}
+.flaw #message #container h1 {
+	font-family: Ubuntu;
+	text-align: center;
+}
+.flaw #message #container h3 {
+	font-family: Ubuntu;
+	text-align: center;
+}
+.flaw #message #container p {
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: Ubuntu;
+}
+#mobile {
+	display: none;
+}
+#resize {
+	display: none;
+}
+
+/* Animated Underline */
+button #aniunderline {
+	width: 0;
+	height: 4px;
+	background-color: #000;
+	transition: width 0.2s ease-out;
+}
+button:hover #aniunderline {
+	width: 100%;
+}
+
+/* Game Pieces (default color (grey) is used) */
+.gamepiece {
+	width: 151px;
+	height: 211px;
+	position: absolute;
+}
+.gamepiece #blub {
+	width: 75px;
+	height: 75px;
+	position: absolute;
+	left: 33px;
+	border-radius: 50%;
+	background-color: #D3D3D3;
+	box-shadow: inset -7px -3px 0 2px #999;
+}
+.gamepiece #blub::before {
+	content: "";
+	width: 14px;
+	height: 27px;
+	position: absolute;
+	top: 10px;
+	left: 15px;
+	border-radius: 50%;
+	background-color: #FFF;
+	-ms-transform: rotate(40deg); /* For Edge */
+	-webkit-transform: rotate(40deg); /* For Safari and Chrome */
+	-moz-transform: rotate(40deg); /* For Firefox */
+	-o-transform: rotate(40deg); /* For Opera */
+	transform: rotate(40deg); /* Standard */
+}
+.gamepiece #collar {
+	width: 97px;
+	height: 0;
+	position: absolute;
+	top: 67px;
+	left: 23px;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 15px solid #D3D3D3;
+	z-index: 3;
+}
+.gamepiece #collar::after {
+	content: "";
+	width: 87px;
+	height: 0;
+	position: absolute;
+	top: 14px;
+	left: -25px;
+	border-top: 15px solid #D3D3D3;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+}
+.gamepiece #collar #shadow {
+	width: 40px;
+	height: 0;
+	position: absolute;
+	right: -23px;
+	border-left: 0px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 15px solid #999;
+	-ms-transform: skew(30deg); /* For Edge */
+	-webkit-transform: skew(30deg); /* For Safari and Chrome */
+	-moz-transform: skew(30deg); /* For Firefox */
+	-o-transform: skew(30deg); /* For Opera */
+	transform: skew(30deg); /* Standard */
+	z-index: 4;
+}
+.gamepiece #collar #shadow::after {
+	content: "";
+	width: 40px;
+	height: 15px;
+	position: absolute;
+	top: 14px;
+	left: -7px;
+	-ms-transform: skew(-45deg); /* For Edge */
+	-webkit-transform: skew(-45deg); /* For Safari and Chrome */
+	-moz-transform: skew(-45deg); /* For Firefox */
+	-o-transform: skew(-45deg); /* For Opera */
+	transform: skew(-45deg); /* Standard */
+	background-color: #999;
+}
+.gamepiece #neck {
+	width: 30px;
+	height: 0;
+	position: absolute;
+	top: 90px;
+	left: 53px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 60px solid #D3D3D3;
+	z-index: 2;
+}
+.gamepiece #neck::after {
+	content: "";
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: -19px;
+	border-top: 35px solid #999;
+	border-left: 50px solid transparent;
+	border-right: 0 solid transparent;
+	-ms-transform: skew(5deg); /* For Edge */
+	-webkit-transform: skew(5deg); /* For Safari and Chrome */
+	-moz-transform: skew(5deg); /* For Firefox */
+	-o-transform: skew(5deg); /* For Opera */
+	transform: skew(5deg); /* Standard */
+}
+.gamepiece #shade {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 95px;
+	left: 42px;
+	border-bottom: 100px solid #999;
+	border-left: 50px solid transparent;
+	border-right: 0 solid transparent;
+	-ms-transform: skew(3deg); /* For Edge */
+	-webkit-transform: skew(3deg); /* For Safari and Chrome */
+	-moz-transform: skew(3deg); /* For Firefox */
+	-o-transform: skew(3deg); /* For Opera */
+	transform: skew(3deg); /* Standard */
+	z-index: 3;
+}
+.gamepiece #shade::after {
+	content: "";
+	width: 70px;
+	height: 32px;
+	position: absolute;
+	top: 46px;
+	left: -27px;
+	border-radius: 50%;
+	-ms-transform: rotate(12deg); /* For Edge */
+	-webkit-transform: rotate(12deg); /* For Safari and Chrome */
+	-moz-transform: rotate(12deg); /* For Firefox */
+	-o-transform: rotate(12deg); /* For Opera */
+	transform: rotate(12deg); /* Standard */
+	background-color: #999;
+}
+.gamepiece #topbase {
+	width: 125px;
+	height: 50px;
+	position: absolute;
+	top: 140px;
+	left: 13px;
+	border-radius: 50%;
+	background-color: #D3D3D3;
+	box-shadow: inset -5px -13px 0 4px #999;
+	z-index: 1;
+}
+.gamepiece #bottombase {
+	width: 150px;
+	height: 55px;
+	position: absolute;
+	top: 155px;
+	border-radius: 50%;
+	background-color: #D3D3D3;
+	box-shadow: inset -10px -10px 0 10px #999;
+}
+
+/* Cards (aesthetic only) */
+.card {
+	width: 375px;
+	height: 500px;
+	position: relative;
+	background-color: #FFFFF0;
+	border-radius: 4px;
+	box-shadow: 2px 6px 5px rgba(33, 33, 33, .5);
+}
+.card #heading {
+	width: 100%;
+	height: 170px;
+	position: relative;
+	top: 8px;
+	font-family: Ubuntu;
+	text-align: center;
+	vertical-align: middle;
+}
+.card #text {
+	width: 90%;
+	height: 300px;
+	position: relative;
+	top: 50px;
+	left: 5%;
+	text-align: center;
+	overflow: hidden;
+}
+.card #text #name {
+	width: 100%;
+	height: 150px;
+}
+
+/* Choose version (single player/multiplayer) */
+#startup .card {
+	display: inline-block;
+	transition: 0.35s ease-out;
+	cursor: pointer;
+}
+#startup #single {
+	top: 75px;
+	left: 0;
+	-webkit-transform: scale(0.9) rotate(-7.5deg); /* For Safari and Chrome */
+	-moz-transform: scale(0.9) rotate(-7.5deg); /* For Firefox */
+	-o-transform: scale(0.9) rotate(-7.5deg); /* For Opera */
+	transform: scale(0.9) rotate(-7.5deg); /* Standard */
+}
+#startup #single:hover {
+	top: 25px;
+	left: -25px;
+}
+#startup #multi {
+	top: 75px;
+	left: 0;
+	-webkit-transform: scale(0.9) rotate(7.5deg); /* For Safari and Chrome */
+	-moz-transform: scale(0.9) rotate(7.5deg); /* For Firefox */
+	-o-transform: scale(0.9) rotate(7.5deg); /* For Opera */
+	transform: scale(0.9) rotate(7.5deg); /* Standard */
+}
+#startup #multi:hover {
+	top: 25px;
+	left: 25px;
+}
+	/* Header */
+	#startup .card #heading {
+		padding-top: 45px;
+		font-size: 50px;
+	}
+	#startup #single #heading {
+		background: linear-gradient(to top, #EE82EE 25%, #FFFFF0 100%);
+	}
+	#startup #multi #heading {
+		background: linear-gradient(to top, #3DEB85 25%, #FFFFF0 100%);
+	}
+	/* Text */
+	#startup .card #text h1 {
+		margin: 0;
+		padding: 0;
+		padding-bottom: 0;
+		font-family: Ubuntu;
+		font-size: 30px;
+		font-weight: 400;
+	}
+	#startup .card #text h2 {
+		margin: 0;
+		margin-top: -75px;
+		padding: 0;
+		font-family: Ubuntu;
+		font-size: 25px;
+		font-weight: 300;
+	}
+
+/* Gamebox with Rulebook */
+#gamebox {
+	width: 1325px;
+	height: 785px;
+	position: absolute;
+	top: -1400px;
+	left: -350px;
+}
+#boxcover {
+	position: absolute;
+	top: -10px;
+	left: 100px;
+	z-index: 50;
+}
+	/* Front of Box */
+	#boxcover #front {
+		width: 775px;
+		position: absolute;
+		top: 30px;
+		left: 125px;
+		border-right: 135px solid transparent;
+		border-bottom: 420px solid #202020;
+		-webkit-transform: rotate(-15deg) rotateX(21deg) skewX(18deg); /* For Safari and Chrome */
+		-moz-transform: rotate(-15deg) rotateX(21deg) skewX(18deg); /* For Firefox */
+		-o-transform: rotate(-15deg) rotateX(21deg) skewX(18deg); /* For Opera */
+		transform: rotate(-15deg) rotateX(21deg) skewX(18deg); /* Standard */
+	}
+	#boxcover #front::before {
+		content: "";
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: -38px;
+		left: 0;
+		border-left: 650px solid #202020;
+		border-top: 40px solid transparent;
+	}
+	#boxcover #front #designs {
+		width: 775px;
+		height: 420px;
+		position: absolute;
+		cursor: default;
+	}
+		/* V "Tux" */
+		#boxcover #front #designs #v {
+			display: inline-block;
+			width: auto;
+			height: auto;
+			z-index: 2;
+		}
+		#v h1 {
+			display: inline-block;
+			padding-top: 0;
+			padding-left: 50px;
+			color: #FFFFFF;
+			font-family: Wallpoet;
+			font-size: 500px;
+			line-height: 300px;
+		}
+		#v #tuxleft {
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 45px;
+			left: 9px;
+			border-top: 60px solid transparent;
+			border-right: 80px solid #FFFFFF;
+			border-bottom: 45px solid transparent;
+			-webkit-transform: rotate(-31deg); /* For Safari and Chrome */
+			-moz-transform: rotate(-31deg); /* For Firefox */
+			-o-transform: rotate(-31deg); /* For Opera */
+			transform: rotate(-31deg); /* Standard */
+		}
+		#v #tuxleft::after {
+			content: "";
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-top: 40px solid transparent;
+			border-right: 80px solid #FFFFFF;
+			border-bottom: 135px solid transparent;
+		}
+		#v #bow {
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 25px;
+			left: 195px;
+			border-top: 15px solid transparent;
+			border-left: 30px solid #FFFFFF;
+			border-bottom: 15px solid transparent;
+		}
+		#v #bow::before {
+			content: "";
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: -15px;
+			left: 0;
+			border-top: 15px solid transparent;
+			border-right: 30px solid #FFFFFF;
+			border-bottom: 15px solid transparent;
+		}
+		#v #tuxright {
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 45px;
+			left: 367px;
+			border-top: 60px solid transparent;
+			border-left: 80px solid #FFFFFF;
+			border-bottom: 45px solid transparent;
+			-webkit-transform: rotate(31deg); /* For Safari and Chrome */
+			-moz-transform: rotate(31deg); /* For Firefox */
+			-o-transform: rotate(31deg); /* For Opera */
+			transform: rotate(31deg); /* Standard */
+		}
+		#v #tuxright::after {
+			content: "";
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			border-top: 40px solid transparent;
+			border-left: 80px solid #FFFFFF;
+			border-bottom: 135px solid transparent;
+		}
+		/* Descriptions and options */
+		#boxcover #front #designs #side {
+			width: 210px;
+			height: 250px;
+			position: absolute;
+			top: 50px;
+			left: 475px;
+			color: #FFFFFF;
+			font-family: Ubuntu;
+			font-size: 25px;
+			-webkit-transform: skewX(10deg); /* For Safari and Chrome */
+			-moz-transform: skewX(10deg); /* For Firefox */
+			-o-transform: skewX(10deg); /* For Opera */
+			transform: skewX(10deg); /* Standard */
+			z-index: 2;
+		}
+		#boxcover #front #designs #side #startbtn {
+			margin-top: 50px;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: transparent;
+			border: none;
+			outline: none;
+			text-align: center;
+			font-family: Ubuntu;
+			font-size: 60px;
+			font-weight: 500;
+			letter-spacing: 3px;
+			color: #FFFFFF;
+			cursor: pointer;
+		}
+		#boxcover #front #designs #side #startbtn #aniunderline {
+			background-color: #FFFFFF;
+		}
+	/* Sides of Box */
+		/* Side facing player */
+		#boxcover #side1 {
+			width: 775px;
+			position: absolute;
+			top: 418px;
+			left: 228px;
+			border-top: 180px solid #252525;
+			border-left: 15px solid transparent;
+			-webkit-transform: rotate(-15deg) skewX(-23deg); /* For Safari and Chrome */
+			-moz-transform: rotate(-15deg) skewX(-23deg); /* For Firefox */
+			-o-transform: rotate(-15deg) skewX(-23deg); /* For Opera */
+			transform: rotate(-15deg) skewX(-23deg); /* Standard */
+			/* opacity: 0.5; */
+		}
+		#boxcover #side1 #information {
+			width: 760px;
+			height: 180px;
+			top: -180px;
+			position: absolute;
+			left: 0;
+			cursor: default;
+		}
+		#boxcover #side1 #information #description {
+			width: 525px;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 25px;
+			-webkit-transform: skewX(5deg); /* For Safari and Chrome */
+			-moz-transform: skewX(5deg); /* For Firefox */
+			-o-transform: skewX(5deg); /* For Opera */
+			transform: skewX(5deg); /* Standard */
+		}
+		#boxcover #side1 #information #fakebarcode {
+			width: auto;
+			padding-top: 5px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-bottom: 0;
+			position: absolute;
+			right: 5px;
+			bottom: 5px;
+			background-color: #FFFFF0;
+			color: #000;
+			font-family: Libre Barcode;
+			font-size: 75px;
+			-webkit-transform: scale(0.75); /* For Safari and Chrome */
+			-moz-transform: scale(0.75); /* For Firefox */
+			-o-transform: scale(0.75); /* For Opera */
+			transform: scale(0.75); /* Standard */
+		}
+		/* Side facing away from player */
+		#boxcover #side2 {
+			width: 500px;
+			position: absolute;
+			top: 329px;
+			left: -126px;
+			border-top: 186px solid #151515;
+			border-right: 10px solid transparent;
+			-webkit-transform: rotate(-16deg) rotateY(55deg) rotateZ(60deg) skewX(30deg); /* For Safari and Chrome */
+			-moz-transform: rotate(-16deg) rotateY(55deg) rotateZ(60deg) skewX(30deg); /* For Firefox */
+			-o-transform: rotate(-16deg) rotateY(55deg) rotateZ(60deg) skewX(30deg); /* For Opera */
+			transform: rotate(-16deg) rotateY(55deg) rotateZ(60deg) skewX(30deg); /* Standard */
+		}
+	/* Shadow created by box */
+	#boxcover #shadow {
+		width: 775px; /* Originally 635px */
+		position: absolute;
+		top: 135px;
+		left: -35px;
+		border-right: 135px solid transparent;
+		border-bottom: 500px solid rgba(0, 0, 0, 0.35);
+		-webkit-transform: rotate(-15deg) rotateX(21deg) skewX(18deg); /* For Safari and Chrome */
+		-moz-transform: rotate(-15deg) rotateX(21deg) skewX(18deg); /* For Firefox */
+		-o-transform: rotate(-15deg) rotateX(21deg) skewX(18deg); /* For Opera */
+		transform: rotate(-15deg) rotateX(21deg) skewX(18deg); /* Standard */
+		z-index: -1;
+	}
+	#boxcover #shadow::after {
+		content: "";
+		width: 0;
+		height: 0;
+		position: absolute;
+		left: 0;
+		bottom: -548px;
+		border-top: 48px solid rgba(0, 0, 0, 0.35);
+		border-left: 105px solid transparent;
+	}
+
+/* Rule/Instructions Book */
+#pamphlet {
+	position: absolute;
+	top: 275px;
+	left: 725px;
+	transition: 0.25s ease-out;
+	cursor: pointer;
+	z-index: 45;
+}
+#pamphlet:hover {
+	top: 300px;
+	left: 760px;
+}
+	/* Cover */
+	#pamphlet #cover {
+		width: 400px;
+		position: absolute;
+		border-right: 50px solid transparent;
+		border-bottom: 500px solid #E0E0E0;
+		border-radius: 5px 0 0 5px;
+		-webkit-transform: rotate(-35deg) rotateY(30deg) rotateX(21deg) skewX(18deg); /* For Safari and Chrome */
+		-moz-transform: rotate(-35deg) rotateY(30deg) rotateX(21deg) skewX(18deg); /* For Firefox */
+		-o-transform: rotate(-35deg) rotateY(30deg) rotateX(21deg) skewX(18deg); /* For Opera */
+		transform: rotate(-35deg) rotateY(30deg) rotateX(21deg) skewX(18deg); /* Standard */
+		box-shadow: -5px 2px rgba(0, 0, 0, 0.25);
+		z-index: 3;
+	}
+	#pamphlet #cover #designs {
+		width: 400px;
+		height: 500px;
+		padding-top: 50px;
+		position: absolute;
+		color: #202020;
+		font-family: Londrina Solid;
+		font-size: 60px;
+		text-align: center;
+		-webkit-transform: rotate(180deg); /* For Safari and Chrome */
+		-moz-transform: rotate(180deg); /* For Firefox */
+		-o-transform: rotate(180deg); /* For Opera */
+		transform: rotate(180deg); /* Standard */
+	}
+	/* Inner "Pages" */
+	#pamphlet .page {
+		width: 400px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-right: 50px solid transparent;
+		border-bottom: 500px solid #FFFFF0;
+		border-radius: 5px 0 0 5px;
+		-webkit-transform: rotate(-35deg) rotateY(30deg) rotateX(21deg) skewX(18deg); /* For Safari and Chrome */
+		-moz-transform: rotate(-35deg) rotateY(30deg) rotateX(21deg) skewX(18deg); /* For Firefox */
+		-o-transform: rotate(-35deg) rotateY(30deg) rotateX(21deg) skewX(18deg); /* For Opera */
+		transform: rotate(-35deg) rotateY(30deg) rotateX(21deg) skewX(18deg); /* Standard */
+		box-shadow: -5px 2px rgba(0, 0, 0, 0.25);
+	}
+	#pamphlet #page1 {
+		top: 4px;
+		left: 1px;
+		z-index: 2;
+	}
+	#pamphlet #page2 {
+		top: 7px;
+		left: 2px;
+		z-index: 1;
+	}
+
+/* Exit Game */
+#exitgame {
+	position: absolute;
+	bottom: 100px;
+	left: 550px;
+	font-family: Ubuntu;
+	font-size: 30px;
+	font-weight: 700;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	-webkit-transform: rotate(-13deg) rotateX(21deg) skewX(18deg); /* For Safari and Chrome */
+	-moz-transform: rotate(-13deg) rotateX(21deg) skewX(18deg); /* For Firefox */
+	-o-transform: rotate(-13deg) rotateX(21deg) skewX(18deg); /* For Opera */
+	transform: rotate(-13deg) rotateX(21deg) skewX(18deg); /* Standard */
+	z-index: 300;
+	cursor: pointer;
+}
+
+/* Discalimer */
+#disclaimer {
+	width: 380px;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+}
+
+/* Allow the player to choose various aspects of their game */
+#choose {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	bottom: -100%;
+}
+	/* Choose number of players (multiplayer only) */
+	#choose #playernum {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+	#choose #playernum #dicecontainer {
+		width: 1166px;
+		margin-top: 75px;
+		position: relative;
+		left: 50%;
+		-webkit-transform: translate(-50%, 0); /* For Safari and Chrome */
+		-moz-transform: translate(-50%, 0); /* For Firefox */
+		-o-transform: translate(-50%, 0); /* For Opera */
+		transform: translate(-50%, 0); /* Standard */
+	}
+	#choose #playernum #dicecontainer button {
+		width: 150px;
+		height: 150px;
+		margin-left: 40px;
+		margin-right: 40px;
+		padding: 0;
+		position: relative;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		-webkit-transform: scale(1.3); /* For Safari and Chrome */
+		-moz-transform: scale(1.3); /* For Firefox */
+		-o-transform: scale(1.3); /* For Opera */
+		transform: scale(1.3); /* Standard */
+		cursor: pointer;
+	}
+		/* Dice */
+		#choose #playernum #dicecontainer .dice {
+			position: absolute;
+			top: 10px;
+			left: 40px;
+		}
+		#choose #playernum #dicecontainer #num {
+			width: 100%;
+			position: absolute;
+			bottom: 10px;
+			font-family: Londrina Solid;
+			font-size: 30px;
+			text-align: center;
+		}
+	/* Choose difficulty */
+	#choose #difficulty {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		bottom: -100%;
+	}
+	#choose #difficulty #cardcontainer {
+		width: 1133px;
+		margin-top: -25px;
+		position: relative;
+		left: 50%;
+		-webkit-transform: translate(-50%, 0) scale(0.9); /* For Safari and Chrome */
+		-moz-transform: translate(-50%, 0) scale(0.9); /* For Firefox */
+		-o-transform: translate(-50%, 0) scale(0.9); /* For Opera */
+		transform: translate(-50%, 0) scale(0.9); /* Standard */
+	}
+		/* Cards */
+		#choose #difficulty #cardcontainer .card {
+			display: inline-block;
+			-webkit-transform: scale(0.8); /* For Safari and Chrome */
+			-moz-transform: scale(0.8); /* For Firefox */
+			-o-transform: scale(0.8); /* For Opera */
+			transform: scale(0.8); /* Standard */
+			transition: 0.35s ease-out;
+			cursor: pointer;
+		}
+		#choose #difficulty #cardcontainer #easy {
+			top: 50px;
+			left: 50px;
+			-webkit-transform: scale(0.8) rotate(-15deg); /* For Safari and Chrome */
+			-moz-transform: scale(0.8) rotate(-15deg); /* For Firefox */
+			-o-transform: scale(0.8) rotate(-15deg); /* For Opera */
+			transform: scale(0.8) rotate(-15deg); /* Standard */
+			z-index: 3;
+		}
+		#choose #difficulty #cardcontainer #easy:hover {
+			top: 0;
+			left: 25px;
+		}
+		#choose #difficulty #cardcontainer #medium {
+			top: 0;
+			left: -15px;
+			z-index: 2;
+		}
+		#choose #difficulty #cardcontainer #medium:hover {
+			top: -50px;
+		}
+		#choose #difficulty #cardcontainer #hard {
+			top: 50px;
+			left: -75px;
+			-webkit-transform: scale(0.8) rotate(15deg); /* For Safari and Chrome */
+			-moz-transform: scale(0.8) rotate(15deg); /* For Firefox */
+			-o-transform: scale(0.8) rotate(15deg); /* For Opera */
+			transform: scale(0.8) rotate(15deg); /* Standard */
+			z-index: 1;
+		}
+		#choose #difficulty #cardcontainer #hard:hover {
+			top: 0;
+			left: -50px;
+		}
+			/* Header */
+			#choose #difficulty #cardcontainer .card #heading {
+				padding-top: 40px;
+				font-size: 75px;
+			}
+			#choose #difficulty #cardcontainer #easy #heading {
+				background: linear-gradient(to top, #7FFF00 25%, #FFFFF0 100%);
+			}
+			#choose #difficulty #cardcontainer #medium #heading {
+				background: linear-gradient(to top, #FFFF00 25%, #FFFFF0 100%);
+			}
+			#choose #difficulty #cardcontainer #hard #heading {
+				background: linear-gradient(to top, #DC143C 25%, #FFFFF0 100%);
+			}
+			/* Text */
+			#choose #difficulty #cardcontainer .card #text h1 {
+				padding-bottom: 0;
+				font-family: Ubuntu;
+				font-size: 30px;
+				font-weight: 400;
+			}
+			#choose #difficulty #cardcontainer .card #text h2 {
+				padding: 0;
+				font-family: Ubuntu;
+				font-size: 20px;
+				font-weight: 300;
+			}
+	/* Choose pawn color (and nickname, for multiplayer only) */
+	#choose #pawncolor {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		bottom: -100%;
+	}
+	#choose #pawncolor #pawncontainer {
+		width: 1106px;
+		margin-top: 50px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#choose #pawncolor #pawncontainer button {
+		margin-left: 15px;
+		margin-right: 15px;
+		padding: 0;
+		position: relative;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+	#choose #pawncolor #pawncontainer button:hover .gamepiece {
+		-webkit-transform: scale(1.25); /* For Safari and Chrome */
+		-moz-transform: scale(1.25); /* For Firefox */
+		-o-transform: scale(1.25); /* For Opera */
+		transform: scale(1.25); /* Standard */
+	}
+		/* Game Pieces */
+		#choose #pawncolor #pawncontainer .gamepiece {
+			position: relative;
+			transition: 0.2s ease-out;
+		}
+			/* Red */
+			#choose #pawncolor #pawncontainer #red #blub {
+				background-color: #FF3C1A;
+				box-shadow: inset -7px -3px 0 2px #CC1F00;
+			}
+			#choose #pawncolor #pawncontainer #red #collar {
+				border-bottom-color: #FF3C1A;
+			}
+			#choose #pawncolor #pawncontainer #red #collar::after {
+				border-top-color: #FF3C1A;
+			}
+			#choose #pawncolor #pawncontainer #red #collar #shadow {
+				border-bottom-color: #CC1F00;
+			}
+			#choose #pawncolor #pawncontainer #red #collar #shadow::after {
+				background-color: #CC1F00;
+			}
+			#choose #pawncolor #pawncontainer #red #neck {
+				border-bottom-color: #FF3C1A;
+			}
+			#choose #pawncolor #pawncontainer #red #neck::after {
+				border-top-color: #CC1F00;
+			}
+			#choose #pawncolor #pawncontainer #red #shade {
+				border-bottom-color: #CC1F00;
+			}
+			#choose #pawncolor #pawncontainer #red #shade::after {
+				background-color: #CC1F00;
+			}
+			#choose #pawncolor #pawncontainer #red #topbase {
+				background-color: #FF3C1A;
+				box-shadow: inset -5px -13px 0 4px #CC1F00;
+			}
+			#choose #pawncolor #pawncontainer #red #bottombase {
+				background-color: #FF3C1A;
+				box-shadow: inset -10px -10px 0 10px #CC1F00;
+			}
+			/* Orange */
+			#choose #pawncolor #pawncontainer #orange #blub {
+				background-color: #FFA500;
+				box-shadow: inset -7px -3px 0 2px #FF8C00;
+			}
+			#choose #pawncolor #pawncontainer #orange #collar {
+				border-bottom-color: #FFA500;
+			}
+			#choose #pawncolor #pawncontainer #orange #collar::after {
+				border-top-color: #FFA500;
+			}
+			#choose #pawncolor #pawncontainer #orange #collar #shadow {
+				border-bottom-color: #FF8C00;
+			}
+			#choose #pawncolor #pawncontainer #orange #collar #shadow::after {
+				background-color: #FF8C00;
+			}
+			#choose #pawncolor #pawncontainer #orange #neck {
+				border-bottom-color: #FFA500;
+			}
+			#choose #pawncolor #pawncontainer #orange #neck::after {
+				border-top-color: #FF8C00;
+			}
+			#choose #pawncolor #pawncontainer #orange #shade {
+				border-bottom-color: #FF8C00;
+			}
+			#choose #pawncolor #pawncontainer #orange #shade::after {
+				background-color: #FF8C00;
+			}
+			#choose #pawncolor #pawncontainer #orange #topbase {
+				background-color: #FFA500;
+				box-shadow: inset -5px -13px 0 4px #FF8C00;
+			}
+			#choose #pawncolor #pawncontainer #orange #bottombase {
+				background-color: #FFA500;
+				box-shadow: inset -10px -10px 0 10px #FF8C00;
+			}
+			/* Yellow */
+			#choose #pawncolor #pawncontainer #yellow #blub {
+				background-color: #FFD700;
+				box-shadow: inset -7px -3px 0 2px #DAA520;
+			}
+			#choose #pawncolor #pawncontainer #yellow #collar {
+				border-bottom-color: #FFD700;
+			}
+			#choose #pawncolor #pawncontainer #yellow #collar::after {
+				border-top-color: #FFD700;
+			}
+			#choose #pawncolor #pawncontainer #yellow #collar #shadow {
+				border-bottom-color: #DAA520;
+			}
+			#choose #pawncolor #pawncontainer #yellow #collar #shadow::after {
+				background-color: #DAA520;
+			}
+			#choose #pawncolor #pawncontainer #yellow #neck {
+				border-bottom-color: #FFD700;
+			}
+			#choose #pawncolor #pawncontainer #yellow #neck::after {
+				border-top-color: #DAA520;
+			}
+			#choose #pawncolor #pawncontainer #yellow #shade {
+				border-bottom-color: #DAA520;
+			}
+			#choose #pawncolor #pawncontainer #yellow #shade::after {
+				background-color: #DAA520;
+			}
+			#choose #pawncolor #pawncontainer #yellow #topbase {
+				background-color: #FFD700;
+				box-shadow: inset -5px -13px 0 4px #DAA520;
+			}
+			#choose #pawncolor #pawncontainer #yellow #bottombase {
+				background-color: #FFD700;
+				box-shadow: inset -10px -10px 0 10px #DAA520;
+			}
+			/* Green */
+			#choose #pawncolor #pawncontainer #green #blub {
+				background-color: #ACE600;
+				box-shadow: inset -7px -3px 0 2px #91C216;
+			}
+			#choose #pawncolor #pawncontainer #green #collar {
+				border-bottom-color: #ACE600;
+			}
+			#choose #pawncolor #pawncontainer #green #collar::after {
+				border-top-color: #ACE600;
+			}
+			#choose #pawncolor #pawncontainer #green #collar #shadow {
+				border-bottom-color: #91C216;
+			}
+			#choose #pawncolor #pawncontainer #green #collar #shadow::after {
+				background-color: #91C216;
+			}
+			#choose #pawncolor #pawncontainer #green #neck {
+				border-bottom-color: #ACE600;
+			}
+			#choose #pawncolor #pawncontainer #green #neck::after {
+				border-top-color: #91C216;
+			}
+			#choose #pawncolor #pawncontainer #green #shade {
+				border-bottom-color: #91C216;
+			}
+			#choose #pawncolor #pawncontainer #green #shade::after {
+				background-color: #91C216;
+			}
+			#choose #pawncolor #pawncontainer #green #topbase {
+				background-color: #ACE600;
+				box-shadow: inset -5px -13px 0 4px #91C216;
+			}
+			#choose #pawncolor #pawncontainer #green #bottombase {
+				background-color: #ACE600;
+				box-shadow: inset -10px -10px 0 10px #91C216;
+			}
+			/* Blue */
+			#choose #pawncolor #pawncontainer #blue #blub {
+				background-color: #00BFFF;
+				box-shadow: inset -7px -3px 0 2px #0086B3;
+			}
+			#choose #pawncolor #pawncontainer #blue #collar {
+				border-bottom-color: #00BFFF;
+			}
+			#choose #pawncolor #pawncontainer #blue #collar::after {
+				border-top-color: #00BFFF;
+			}
+			#choose #pawncolor #pawncontainer #blue #collar #shadow {
+				border-bottom-color: #0086B3;
+			}
+			#choose #pawncolor #pawncontainer #blue #collar #shadow::after {
+				background-color: #0086B3;
+			}
+			#choose #pawncolor #pawncontainer #blue #neck {
+				border-bottom-color: #00BFFF;
+			}
+			#choose #pawncolor #pawncontainer #blue #neck::after {
+				border-top-color: #0086B3;
+			}
+			#choose #pawncolor #pawncontainer #blue #shade {
+				border-bottom-color: #0086B3;
+			}
+			#choose #pawncolor #pawncontainer #blue #shade::after {
+				background-color: #0086B3;
+			}
+			#choose #pawncolor #pawncontainer #blue #topbase {
+				background-color: #00BFFF;
+				box-shadow: inset -5px -13px 0 4px #0086B3;
+			}
+			#choose #pawncolor #pawncontainer #blue #bottombase {
+				background-color: #00BFFF;
+				box-shadow: inset -10px -10px 0 10px #0086B3;
+			}
+			/* Violet */
+			#choose #pawncolor #pawncontainer #violet #blub {
+				background-color: #ED78ED;
+				box-shadow: inset -7px -3px 0 2px #D55DD1;
+			}
+			#choose #pawncolor #pawncontainer #violet #collar {
+				border-bottom-color: #ED78ED;
+			}
+			#choose #pawncolor #pawncontainer #violet #collar::after {
+				border-top-color: #ED78ED;
+			}
+			#choose #pawncolor #pawncontainer #violet #collar #shadow {
+				border-bottom-color: #D55DD1;
+			}
+			#choose #pawncolor #pawncontainer #violet #collar #shadow::after {
+				background-color: #D55DD1;
+			}
+			#choose #pawncolor #pawncontainer #violet #neck {
+				border-bottom-color: #ED78ED;
+			}
+			#choose #pawncolor #pawncontainer #violet #neck::after {
+				border-top-color: #D55DD1;
+			}
+			#choose #pawncolor #pawncontainer #violet #shade {
+				border-bottom-color: #D55DD1;
+			}
+			#choose #pawncolor #pawncontainer #violet #shade::after {
+				background-color: #D55DD1;
+			}
+			#choose #pawncolor #pawncontainer #violet #topbase {
+				background-color: #ED78ED;
+				box-shadow: inset -5px -13px 0 4px #D55DD1;
+			}
+			#choose #pawncolor #pawncontainer #violet #bottombase {
+				background-color: #ED78ED;
+				box-shadow: inset -10px -10px 0 10px #D55DD1;
+			}
+		/* Nickname Form */
+		#choose #pawncolor form {
+			width: 700px;
+			margin-top: 20px;
+			margin-left: auto;
+			margin-right: auto;
+			font-family: Ubuntu;
+			font-size: 30px;
+			font-weight: 100;
+		}
+		#choose #pawncolor form input[type=text] {
+			padding-top: 10px;
+			padding-left: 15px;
+			padding-bottom: 10px;
+			background-color: transparent;
+			font-family: Ubuntu;
+			font-size: 25px;
+			font-weight: 400;
+			letter-spacing: 2px;
+			border: 2px solid rgba(128, 128, 128, 0.35);
+			border-left: none;
+			border-radius: 6px;
+			outline: none;
+			transition: 0.25s ease-out;
+		}
+		#choose #pawncolor form input[type=text]:focus {
+			border: 2px solid rgb(40, 40, 40);
+			border-left: none;
+		}
+	/* Continue Button */
+	#choose #continue {
+		margin-top: -50px;
+		font-family: Ubuntu;
+		font-size: 30px;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+	#choose #continue #container {
+		display: inline-block;
+		height: 100%;
+		position: relative;
+		text-align: left;
+	}
+	#choose #continue #container .type {
+		font-family: Special Elite;
+		font-size: 35px;
+		font-weight: 900;
+	}
+	#choose #continue .prompt {
+		display: inline-block;
+		height: 100%;
+		position: relative;
+		color: #101010;
+		font-size: 90px;
+		font-weight: 100;
+		opacity: 0;
+		animation: prompting 1.25s linear infinite;
+		transition: opacity 0.1s ease-out;
+	}
+		/* Pawn Color */
+		#hideme {
+			display: none;
+		}
+@keyframes prompting {
+	0%	{ margin-left:0; margin-right:0; }
+	25%	{ margin-left:10px; margin-right:-10px; }
+	45%	{ margin-left:0; margin-right:0; }
+	60%	{ margin-left:10px; margin-right:-10px; }
+	85%	{ margin-left:0; margin-right:0; }
+}
+
+/* Current player header (multiplayer only) */
+#playerheading {
+	width: 100%;
+	height: auto;
+	padding: 0;
+	position: fixed;
+	top: -200px;
+	left: 0;
+	font-family: Ubuntu;
+	font-size: 27px;
+	font-weight: 100;
+	text-align: center;
+	background-color: transparent;
+	transition: top 0.5s ease-in-out;
+	z-index: 200;
+}
+#playerheading #playerheader {
+	padding-top: 5px;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 2px;
+	background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 5%, rgba(255, 255, 255, 0.75) 95%, rgba(255, 255, 255, 0) 100%);;
+}
+
+/* Identify the order that the players will play in (multiplayer only) */
+#turnorder {
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	padding-left: 5%;
+	padding-right: 5%;
+	position: fixed;
+	top: -150%; /* Originally 0 */
+	left: 25%;
+	background-color: #FFFFF0;
+	box-shadow: 2px 6px 5px rgba(33, 33, 33, .5);
+	transition: top 0.75s ease-in-out;
+	z-index: 51;
+}
+#turnorder p {
+	margin-top: 35px;
+	margin-bottom: 20px;
+	font-family: Ubuntu;
+	font-size: 35px;
+	font-weight: 100;
+	text-align: center;
+}
+#turnorder ol {
+	font-family: Ubuntu;
+	font-size: 32px;
+	font-weight: 400;
+}
+
+/* Identify whose turn it is */
+#turnidentifier {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(255, 255, 255, 0.75);
+	z-index: 100;
+}
+#turnidentifier button {
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border: none;
+	background-color: transparent;
+	font-family: Londrina Solid;
+	font-size: 40px;
+	text-align: center;
+	letter-spacing: 5px;
+	text-decoration: none;
+	cursor: pointer;
+}
+#turnidentifier button #user {
+	font-family: Vast Shadow;
+	font-size: 60px;
+}
+
+/* Game Board */
+#board {
+	width: 2200px;
+	height: 2200px;
+	position: fixed;
+	-ms-transform: rotate(3deg); /* For Edge */
+	-webkit-transform: rotate(3deg); /* For Safari and Chrome */
+	-moz-transform: rotate(3deg); /* For Firefox */
+	-o-transform: rotate(3deg); /* For Opera */
+	transform: rotate(3deg); /* Standard */
+	top: -2300px; /* Originally -1600px */
+	right: 100px;
+	background-color: white;
+	border: 5px inset;
+	border-radius: 5px;
+	overflow: hidden;
+	cursor: default;
+	z-index: 1;
+}
+	/* Game Pieces */
+	#board .gamepiece {
+		-webkit-transform: scale(0.75); /* For Safari and Chrome */
+		-moz-transform: scale(0.75); /* For Firefox */
+		-o-transform: scale(0.75); /* For Opera */
+		transform: scale(0.75); /* Standard */
+		z-index: 10;
+	}
+		/* Player's Piece */
+		#board #player {
+			top: 1900px;
+			left: 1800px;
+			z-index: 10;
+		}
+			/* Multiplayer */
+			#board #player1 {
+				top: 2000px;
+				left: 1800px;
+				z-index: 10;
+			}
+			#board #player2 {
+				top: 1780px;
+				left: 2050px;
+				z-index: 10;
+			}
+			#board #player3 {
+				display: none;
+				top: 1780px;
+				left: 1800px;
+				z-index: 10;
+			}
+			#board #player4 {
+				display: none;
+				top: 2000px;
+				left: 2050px;
+				z-index: 10;
+			}
+			#board #player5 {
+				display: none;
+				top: 2000px;
+				left: 1925px;
+				z-index: 10;
+			}
+			#board #player6 {
+				display: none;
+				top: 1780px;
+				left: 1925px;
+				z-index: 10;
+			}
+		/* Fortune's (NPC/AI) Piece */
+		#board #fortune {
+			top: 1780px;
+			left: 2015px;
+			z-index: 10;
+		}
+	/* Middle of the Board */
+	#board #middle {
+		width: 1300px;
+		height: 1300px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-ms-transform: translate(-50%, -50%); /* For Edge */
+		-webkit-transform: translate(-50%, -50%); /* For Safari and Chrome */
+		-moz-transform: translate(-50%, -50%); /* For Firefox */
+		-o-transform: translate(-50%, -50%); /* For Opera */
+		transform: translate(-50%, -50%); /* Standard */
+	}
+		/* Name of Game */
+		#board #middle #name {
+			display: flex;
+			position: absolute;
+			top: 45%;
+			left: 50%;
+			-ms-transform: translate(-50%, -50%); /* For Edge */
+			-webkit-transform: translate(-50%, -50%); /* For Safari and Chrome */
+			-moz-transform: translate(-50%, -50%); /* For Firefox */
+			-o-transform: translate(-50%, -50%); /* For Opera */
+			transform: translate(-50%, -50%); /* Standard */
+			align-items: center;
+			justify-content: center;
+		}
+		#board #middle #name #container {
+			-ms-transform: scale(2, 2); /* For Edge */
+			-webkit-transform: scale(2, 2); /* For Safari and Chrome */
+			-moz-transform: scale(2, 2); /* For Firefox */
+			-o-transform: scale(2, 2); /* For Opera */
+			transform: scale(2, 2); /* Standard */
+		}
+		#board #middle #name #container #v {
+			cursor: inherit;
+		}
+	/* Corner Spaces */
+	#board .corner {
+		width: 400px;
+		height: 400px;
+		position: absolute;
+	}
+	#board .corner #text {
+		position: absolute;
+		font-family: Vast Shadow;
+		cursor: default;
+	}
+	#board #go {
+		right: 0;
+		bottom: 0;
+		background-color: #FFFFFF;
+	}
+	#board #go #text {
+		-ms-transform: rotate(-30deg); /* For Edge */
+		-webkit-transform: rotate(-30deg); /* For Safari and Chrome */
+		-moz-transform: rotate(-30deg); /* For Firefox */
+		-o-transform: rotate(-30deg); /* For Opera */
+		transform: rotate(-30deg); /* Standard */
+		font-size: 150px;
+	}
+	#board #go #arrow {
+		position: absolute;
+		left: 10%;
+		bottom: 10%;
+	}
+	#board #go #arrow #arrowhead {
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-top: 25px solid transparent;
+		border-right: 75px solid #111;
+		border-bottom: 25px solid transparent;
+		border-radius: 100px;
+	}
+	#board #go #arrow #shaft {
+		display: inline-block;
+		width: 200px;
+		height: 5px;
+		position: absolute;
+		bottom: 50%;
+		left: 74px;
+		background-color: #111;
+	}
+	#board #go #arrow #shaft .feathers {
+		width: 75px;
+		height: 27px;
+		position: absolute;
+		right: -10px;
+		background: #111;
+		color: #FFFFFF;
+		font-size: 23px;
+		font-weight: 900;
+	}
+	#board #go #arrow #shaft #upper {
+		top: -5px;
+		transform: skew(50deg);
+	}
+	#board #go #arrow #shaft #lower {
+		bottom: -5px;
+		transform: skew(-50deg);
+	}
+	#board #jail {
+		left: 0;
+		bottom: 0;
+		background-color: #FFFFFF;
+	}
+	#board #jail #text {
+		font-size: 50px;
+	}
+	#board #jail .vertical {
+		-ms-transform: rotate(90deg); /* For Edge */
+		-webkit-transform: rotate(90deg); /* For Safari and Chrome */
+		-moz-transform: rotate(90deg); /* For Firefox */
+		-o-transform: rotate(90deg); /* For Opera */
+		transform: rotate(90deg); /* Standard */
+		left: -45px;
+		bottom: 160px;
+	}
+	#board #jail .horizontal {
+		right: 0;
+		bottom: 20px;
+	}
+	#board #jail #notvisiting {
+		width: 300px;
+		height: 300px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: linear-gradient(to top, #808080 85%, #FFFFFF 97%);
+		background-color: gray;
+	}
+	#board #jail #notvisiting #text {
+		-ms-transform: rotate(45deg); /* For Edge */
+		-webkit-transform: rotate(45deg); /* For Safari and Chrome */
+		-moz-transform: rotate(45deg); /* For Firefox */
+		-o-transform: rotate(45deg); /* For Opera */
+		transform: rotate(45deg); /* Standard */
+		top: 100px;
+		left: 0;
+		font-size: 92px;
+	}
+	#board #jail #notvisiting #barred {
+		display: inline-block;
+		width: 25px;
+		height: 100%;
+		margin-left: 25px;
+		margin-right: 25px;
+		background: linear-gradient(to top, #111 80%, #FFFFFF 100%);
+		opacity: .95;
+	}
+	#board #holiday {
+		top: 0;
+		left: 0;
+		background-color: #FFFFFF;
+	}
+	#board #holiday #text {
+		-ms-transform: rotate(135deg); /* For Edge */
+		-webkit-transform: rotate(135deg); /* For Safari and Chrome */
+		-moz-transform: rotate(135deg); /* For Firefox */
+		-o-transform: rotate(135deg); /* For Opera */
+		transform: rotate(135deg); /* Standard */
+		top: 120px;
+		left: -30px;
+		font-size: 75px;
+	}
+	#board #goto {
+		top: 0;
+		right: 0;
+		background-color: #FFFFFF;
+	}
+	#board #goto #text {
+		-ms-transform: rotate(220deg); /* For Edge */
+		-webkit-transform: rotate(220deg); /* For Safari and Chrome */
+		-moz-transform: rotate(220deg); /* For Firefox */
+		-o-transform: rotate(220deg); /* For Opera */
+		transform: rotate(220deg); /* Standard */
+		bottom: 35px;
+		font-size: 75px;
+	}
+	/* Side Spaces */
+	#board .side {
+		display: flex;
+		flex-direction: row-reverse;
+		width: 1390px;
+		height: 400px;
+		position: absolute;
+	}
+	#board .side .space {
+		display: inline-block;
+		width: 14.29%;
+		height: 100%;
+		position: relative;
+	}
+	#board .side .space #text {
+		width: 100%;
+		padding: 10px;
+		position: absolute;
+		top: 15%;
+		background-color: #FFFFFF;
+		font-family: Ubuntu;
+		font-size: 21px;
+		text-align: center;
+	}
+	#board .side .space #ownerid {
+		display: flex;
+		width: 100%;
+		height: 15%;
+		position: absolute;
+		align-items: center;
+		justify-content: center;
+	}
+	#board .side .space #ownerid .marker {
+		width: 20px;
+		height: 20px;
+		margin: 5px;
+		border: 1px solid rgba(0, 0, 0, 0.5);
+		border-radius: 50%;
+	}
+	#ownerid #base, #ownerid #u1, #ownerid #u2, #ownerid #u3, #ownerid #u4, #ownerid #u5 {
+		display: none;
+	}
+		/* Bottom Side */
+		#board #bottom {
+			right: 400px;
+			bottom: 0;
+		}
+		#board #bottom #red1 {
+			background: linear-gradient(to right, #DC143C 25%, #FFFFFF 97%);
+		}
+		#board #bottom #red2 {
+			background-color: #DC143C;
+			border: 2px #B22222;
+			border-style: none solid none solid;
+		}
+		#board #bottom #red3 {
+			background: linear-gradient(to left, #DC143C 25%, #FFFFFF 97%);
+		}
+		#board #bottom #orange1 {
+			background: linear-gradient(to right, #FFA500 25%, #FFFFFF 97%);
+		}
+		#board #bottom #orange2 {
+			background-color: #FFA500;
+			border: 2px #FF8C00;
+			border-style: none solid none solid;
+		}
+		#board #bottom #orange3 {
+			background: linear-gradient(to left, #FFA500 25%, #FFFFFF 97%);
+		}
+		/* Left Side */
+		#board #left {
+			-ms-transform: rotate(90deg); /* For Edge */
+			-webkit-transform: rotate(90deg); /* For Safari and Chrome */
+			-moz-transform: rotate(90deg); /* For Firefox */
+			-o-transform: rotate(90deg); /* For Opera */
+			transform: rotate(90deg); /* Standard */
+			top: 895px;
+			left: -495px;
+		}
+		#board #left #yellow1 {
+			background: linear-gradient(to right, #FFFF00 25%, #FFFFFF 97%);
+		}
+		#board #left #yellow2 {
+			background: linear-gradient(to left, #FFFF00 25%, #FFFFFF 97%);
+		}
+		#board #left #lime1 {
+			background: linear-gradient(to right, #7FFF00 25%, #FFFFFF 97%);
+		}
+		#board #left #lime2 {
+			background-color: #7FFF00;
+			border: 2px #79F200;
+			border-style: none solid none solid;
+		}
+		#board #left #lime3 {
+			background: linear-gradient(to left, #7FFF00 25%, #FFFFFF 97%);
+		}
+		/* Top Side */
+		#board #top {
+			-ms-transform: rotate(180deg); /* For Edge */
+			-webkit-transform: rotate(180deg); /* For Safari and Chrome */
+			-moz-transform: rotate(180deg); /* For Firefox */
+			-o-transform: rotate(180deg); /* For Opera */
+			transform: rotate(180deg); /* Standard */
+			top: 0;
+			left: 400px;
+		}
+		#board #top #green1 {
+			background: linear-gradient(to right, #32CD32 25%, #FFFFFF 97%);
+		}
+		#board #top #green2 {
+			background-color: #32CD32;
+			border: 2px #11C511;
+			border-style: none solid none solid;
+		}
+		#board #top #green3 {
+			background: linear-gradient(to left, #32CD32 25%, #FFFFFF 97%);
+		}
+		#board #top #turquoise1 {
+			background: linear-gradient(to right, #3DEB85 25%, #FFFFFF 97%);
+		}
+		#board #top #turquoise2 {
+			background-color: #3DEB85;
+			border: 2px #3ADf7E;
+			border-style: none solid none solid;
+		}
+		#board #top #turquoise3 {
+			background: linear-gradient(to left, #3DEB85 25%, #FFFFFF 97%);
+		}
+		/* Right Side */
+		#board #right {
+			-ms-transform: rotate(270deg); /* For Edge */
+			-webkit-transform: rotate(270deg); /* For Safari and Chrome */
+			-moz-transform: rotate(270deg); /* For Firefox */
+			-o-transform: rotate(270deg); /* For Opera */
+			transform: rotate(270deg); /* Standard */
+			right: -495px;
+			bottom: 895px;
+		}
+		#board #right #blue1 {
+			background: linear-gradient(to right, #1E90FF 25%, #FFFFFF 97%);
+		}
+		#board #right #blue2 {
+			background-color: #1E90FF;
+			border: 2px #00BFFF;
+			border-style: none solid none solid;
+		}
+		#board #right #blue3 {
+			background: linear-gradient(to left, #1E90FF 25%, #FFFFFF 97%);
+		}
+		#board #right #violet1 {
+			background: linear-gradient(to right, #EE82EE 25%, #FFFFFF 97%);
+		}
+		#board #right #violet2 {
+			background: linear-gradient(to left, #EE82EE 25%, #FFFFFF 97%);
+		}
+	#board .side .marketing {
+		background-color: #FFFFFF;
+	}
+	#board .side .marketing #text {
+		width: 156%;
+		padding: 0;
+		-ms-transform: rotate(90deg); /* For Edge */
+		-webkit-transform: rotate(90deg); /* For Safari and Chrome */
+		-moz-transform: rotate(90deg); /* For Firefox */
+		-o-transform: rotate(90deg); /* For Opera */
+		transform: rotate(90deg); /* Standard */
+		top: 165px;
+		left: -56px;
+		font-size: 50px;
+		vertical-align: middle;
+	}
+	#board .side .marketing #text #container {
+		display: inline-block;
+		width: 100px;
+		padding-left: 5px;
+		padding-right: 5px;
+		border: 4px solid #000;
+		border-radius: 10px;
+		font-size: 75px;
+	}
+	#board .side #grant {
+		background-color: #FFFFFF;
+	}
+	#board .side #grant #text {
+		padding: 0;
+		-ms-transform: rotate(90deg); /* For Edge */
+		-webkit-transform: rotate(90deg); /* For Safari and Chrome */
+		-moz-transform: rotate(90deg); /* For Firefox */
+		-o-transform: rotate(90deg); /* For Opera */
+		transform: rotate(90deg); /* Standard */
+		top: 95px;
+		left: -10px;
+		color: #41d628;
+		text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+		font-family: Special Elite;
+		font-size: 75px;
+		text-align: left;
+	}
+
+/* Dice (each six-sided) */
+.dice {
+	width: 70px;
+	height: 70px;
+	position: fixed;
+	border-radius: 5px;
+	background-color: #F8F8F8;
+	box-shadow: 0 6px 5px rgba(33,33,33,.5);
+	z-index: 5;
+}
+.dice .dot {
+	display: inline-block;
+	width: 19px;
+	height: 19px;
+	border-radius: 50%;
+	background: radial-gradient(#555, #000);
+}
+.dice #center {
+	margin-left: 25.5px;
+}
+.dice #top {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.dice #bottom {
+	margin-left: 46px;
+}
+.dice .one .dot {
+	margin-top: 25.5px;
+}
+.dice .two .dot {
+	display: block;
+}
+.dice .two #bottom {
+	margin-top: 22px;
+}
+.dice .three .dot {
+	display: block;
+}
+.dice .three #center {
+	margin-top: 1.5px;
+	margin-bottom: 1.5px;
+}
+.dice .four .dot {
+	margin-top: 8px;
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-bottom: 8px;
+}
+.dice .five .dot {
+	margin-top: 1px;
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-bottom: 1px;
+}
+.dice .five #center {
+	margin-top: 1px;
+	margin-left: 25.5px;
+	margin-right: 25.5px;
+	margin-bottom: 1px;
+}
+.dice .six .dot {
+	margin-top: 1px;
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-bottom: 1px;
+}
+#first {
+	display: none;
+	top: 1100px; /* Originally 100px */
+	left: 2000px; /* Originally 475px */
+	-ms-transform: rotate(-25deg); /* For Edge */
+	-webkit-transform: rotate(-25deg); /* For Safari and Chrome */
+	-moz-transform: rotate(-25deg); /* For Firefox */
+	-o-transform: rotate(-25deg); /* For Opera */
+	transform: rotate(-25deg); /* Standard */
+}
+#second {
+	display: none;
+	top: 1100px; /* Originally 135px */
+	left: 2000px; /* Originally 560px */
+	-ms-transform: rotate(10deg); /* For Edge */
+	-webkit-transform: rotate(10deg); /* For Safari and Chrome */
+	-moz-transform: rotate(10deg); /* For Firefox */
+	-o-transform: rotate(10deg); /* For Opera */
+	transform: rotate(10deg); /* Standard */
+}
+#f1, #f2, #f3, #f4, #f5, #f6 {
+	display: none;
+}
+#s1, #s2, #s3, #s4, #s5, #s6 {
+	display: none;
+}
+
+/* Question Card */
+#card {
+	width: 75%;
+	height: 85%;
+	margin: 0 auto;
+	position: fixed;
+	top: -185%; /* Originally 10% */
+	left: 12.5%;
+	-webkit-perspective: 800px; /* For Safari and Chrome */
+	-moz-perspective: 800px; /* For Firefox */
+	-o-perspective: 800px; /* For Opera */
+	perspective: 800px; /* Standard */
+	z-index: 50;
+}
+#card #container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-webkit-transition: -webkit-transform 0.8s; /* For Safari and Chrome */
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transition: -moz-transform 0.8s; /* For Firefox */
+	-moz-transform-style: preserve-3d;
+	-moz-transform-origin: 50% 50%;
+	-o-transition: -o-transform 0.8s; /* For Opera */
+	-o-transform-style: preserve-3d;
+	-o-transform-origin: 50% 50%;
+	transition: transform 0.8s; /* Standard */
+	transform-style: preserve-3d;
+	transform-origin: 50% 50%;
+}
+#card #container::after {
+	content: "";
+	width: 70%;
+	height: 100px;
+	position: absolute;
+	left: 15%;
+	bottom: 0;
+	box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+	z-index: -1;
+}
+#card #container.flipped {
+	-ms-transform: rotateY(180deg); /* For Edge */
+	-webkit-transform: rotateY(180deg); /* For Safari and Chrome */
+	-moz-transform: rotateY(180deg); /* For Firefox */
+	-o-transform: rotateY(180deg); /* For Opera */
+	transform: rotateY(180deg); /* Standard */
+}
+	/* Question Side */
+	#card #container #questionside {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-color: #FFFFF0;
+		-webkit-backface-visibility: hidden; /* For Safari and Chrome */
+		-moz-backface-visibility: hidden; /* For Firefox */
+		-o-backface-visibility: hidden; /* For Opera */
+		backface-visibility: hidden; /* Standard */
+	}
+	#card #container #questionside .choicebtn {
+		display: inline-block;
+		width: 50%;
+		height: 100%;
+		border: none;
+		background-color: transparent;
+		font-family: Ubuntu;
+		cursor: pointer;
+		overflow: auto;
+	}
+	#card #container #questionside .choicebtn.left {
+		float: left;
+	}
+	#card #container #questionside .choicebtn.right {
+		float: right;
+	}
+	#card #container #questionside #identifierbar {
+		width: 100%;
+		height: 27px;
+		margin-top: 2.5%;
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 2.5%;
+		left: 0;
+		background-color: #D3D3D3;
+	}
+		/* Normal Questions */
+		#card #container #questionside #normq {
+			display: none;
+			width: 100%;
+			height: 90%;
+			left: 0;
+			overflow: hidden;
+		
+		}
+		#card #container #questionside #normq #normqcontainer {
+			width: 95%;
+			height: 47%;
+			position: relative;
+			left: 5%;
+			background-color: transparent;
+			overflow: auto;
+		}
+		#card #container #questionside #normq h1 {
+			margin-top: 0;
+			margin-left: 0;
+			margin-right: 5%;
+			margin-bottom: 0;
+			padding: 0;
+			font-size: 30px;
+		}
+			/* Answer Choices */
+			#card #container #questionside #normq #answercontainer {
+				width: 90%;
+				height: 39%;
+				position: absolute;
+				left: 5%;
+				bottom: 2%;
+				border: none;
+			}
+			#card #container #questionside #normq #answercontainer .choicebtn {
+				height: 50%;
+				text-align: left;
+			}
+			#card #container #questionside #normq #answercontainer .choicebtn .letterchoice {
+				display: inline-block;
+				width: 23%;
+				height: 100%;
+				float: left;
+				font-size: 47px;
+				font-weight: 100;
+			}
+			#card #container #questionside #normq #answercontainer .choicebtn .fullchoice {
+				display: inline-block;
+				width: 77%;
+				height: 100%;
+				float: right;
+				font-size: 20px;
+			}
+		/* True or False Questions */
+		#card #container #questionside #tfq {
+			display: none;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			overflow: hidden;
+		}
+		#card #container #questionside #tfq h1 {
+			margin-top: 0;
+			margin-left: 5%;
+			margin-right: 5%;
+			margin-bottom: 1%;
+			padding: 0;
+			font-size: 35px;
+		}
+		#card #container #questionside #tfq #tfqcontainer {
+			width: 89%;
+			height: 54%;
+			position: relative;
+			left: 11%;
+			background-color: transparent;
+			overflow: auto;
+		}
+		#card #container #questionside #tfq h2 {
+			margin-top: 0;
+			margin-left: 0;
+			margin-right: 5%;
+			margin-bottom: 0;
+			padding: 0;
+			font-family: Ubuntu;
+			font-size: 30px;
+			font-weight: 400;
+			cursor: default;
+		}
+			/* Answer Choices */
+			#card #container #questionside #tfq #answercontainer {
+				width: 90%;
+				height: auto;
+				position: absolute;
+				left: 5%;
+				bottom: 4%;
+				border: none;
+			}
+			#card #container #questionside #tfq #answercontainer .choicebtn {
+				display: inline-block;
+				font-size: 47px;
+				font-weight: 100;
+				text-align: center;
+			}
+		/* What is Described Above Question (Mixed Layout) */
+		#card #container #questionside #mixedq {
+			display: none;
+			width: 100%;
+			height: 90%;
+			left: 0;
+			overflow: hidden;
+		}
+		#card #container #questionside #mixedq h1 {
+			margin-top: 0;
+			margin-left: 5%;
+			margin-right: 5%;
+			margin-bottom: 1%;
+			padding: 0;
+			font-size: 30px;
+		}
+		#card #container #questionside #mixedq #mixedqcontainer {
+			width: 89%;
+			height: 30%;
+			position: relative;
+			left: 11%;
+			background-color: transparent;
+			overflow: auto;
+		}
+		#card #container #questionside #mixedq h2 {
+			margin-top: 0;
+			margin-left: 0;
+			margin-right: 5%;
+			margin-bottom: 0;
+			padding: 0;
+			font-family: Ubuntu;
+			font-size: 25px;
+			font-weight: 400;
+			cursor: default;
+		}
+			/* Answer Choices */
+			#card #container #questionside #mixedq #answercontainer {
+				width: 90%;
+				height: 39%;
+				position: absolute;
+				left: 5%;
+				bottom: 2%;
+				border: none;
+			}
+			#card #container #questionside #mixedq #answercontainer .choicebtn {
+				height: 50%;
+				text-align: left;
+			}
+			#card #container #questionside #mixedq #answercontainer .choicebtn .letterchoice {
+				display: inline-block;
+				width: 23%;
+				height: 100%;
+				float: left;
+				font-size: 47px;
+				font-weight: 100;
+			}
+			#card #container #questionside #mixedq #answercontainer .choicebtn .fullchoice {
+				display: inline-block;
+				width: 77%;
+				height: 100%;
+				float: right;
+				font-size: 20px;
+			}
+	/* Identifier Side */
+	#card #container #identifierside {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-color: #FFFFF0;
+		-ms-transform: rotateY(180deg); /* For Edge */
+		-webkit-backface-visibility: hidden; /* For Safari and Chrome */
+		-webkit-transform: rotateY(180deg);
+		-moz-backface-visibility: hidden; /* For Firefox */
+		-moz-transform: rotateY(180deg);
+		-o-backface-visibility: hidden; /* For Opera */
+		-o-transform: rotateY(180deg);
+		backface-visibility: hidden; /* Standard */
+		transform: rotateY(180deg);
+		align-items: center;
+		justify-content: center;
+	}
+	#card #container #identifierside #correct {
+		display: none;
+	}
+	#card #container #identifierside #correct #identification {
+		width: 100%;
+		text-align: center;
+		font-family: Special Elite;
+		color: #41d628;
+		text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+	}
+	#card #container #identifierside #incorrect {
+		display: none;
+	}
+	#card #container #identifierside #incorrect #identification {
+		width: 100%;
+		text-align: center;
+		font-family: Special Elite;
+		color: #F90000;
+		text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+	}
+
+/* Display who owns the space so the player can see it */
+#ownerpaper {
+	width: 415px;
+	height: 150px;
+	padding: 5px;
+	padding-top: 30px;
+	position: absolute;
+	top: -300px; /* Originally -25px */
+	right: 5px;
+	-ms-transform: rotate(5deg); /* For Edge */
+	-webkit-transform: rotate(5deg); /* For Safari and Chrome */
+	-moz-transform: rotate(5deg); /* For Firefox */
+	-o-transform: rotate(5deg); /* For Opera */
+	transform: rotate(5deg); /* Standard */
+	color: #000;
+	box-shadow: 0 6px 5px rgba(33,33,33,.5);
+	background-color: #FFFFF0;
+	z-index: 75;
+}
+#ownerpaper::after {
+	content: "";
+	width: 100%;
+	height: 2px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -1.5px;
+	background-color: #FFFFF0;
+	-webkit-clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%); /* For Safari, Chrome, and Opera */
+	clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%); /* Standard */ /* Note that clip-path does not work in Edge */
+}
+#ownerpaper h1 {
+	font-family: Special Elite;
+	text-align: center;
+}
+#ownerpaper h2 {
+	margin: 0;
+	margin-left: 10px;
+	font-family: Londrina Solid;
+	font-weight: 100;
+	text-align: center;
+}
+
+/* Asset Cards */
+.assetcard {
+	display: inline-block;
+	width: 450px;
+	height: 600px;
+	position: relative;
+	background-color: #FFFFF0;
+	border-radius: 4px;
+	box-shadow: 2px 6px 5px rgba(33, 33, 33, .5);
+}
+	/* Header */
+	.assetcard .heading {
+		width: 100%;
+		height: 170px;
+		padding-top: 50px;
+		position: relative;
+		top: 8px;
+		font-family: Ubuntu;
+		font-size: 50px;
+		text-align: center;
+		vertical-align: middle;
+	}
+	.assetcard #red {
+		background: linear-gradient(to top, #DC143C 25%, #FFFFF0 100%);
+	}
+	.assetcard #orange {
+		background: linear-gradient(to top, #FFA500 25%, #FFFFF0 100%);
+	}
+	.assetcard #yellow {
+		background: linear-gradient(to top, #FFFF00 25%, #FFFFF0 100%);
+	}
+	.assetcard #lime {
+		background: linear-gradient(to top, #7FFF00 25%, #FFFFF0 100%);
+	}
+	.assetcard #green {
+		background: linear-gradient(to top, #32CD32 25%, #FFFFF0 100%);
+	}
+	.assetcard #turquoise {
+		background: linear-gradient(to top, #3DEB85 25%, #FFFFF0 100%);
+	}
+	.assetcard #blue {
+		background: linear-gradient(to top, #1E90FF 25%, #FFFFF0 100%);
+	}
+	.assetcard #violet {
+		background: linear-gradient(to top, #EE82EE 25%, #FFFFF0 100%);
+	}
+	.assetcard #marketing {
+		background: linear-gradient(to top, #F5F5F5 25%, #FFFFF0 100%);
+	}
+	.assetcard .heading #bordering {
+		padding-left: 5px;
+		padding-right: 5px;
+		border: 4px solid #000;
+		border-radius: 10px;
+		font-size: 75px;
+	}
+	/* Text */
+	.assetcard #text {
+		width: 90%;
+		height: 500px;
+		position: relative;
+		top: 8px;
+		left: 5%;
+		text-align: center;
+		overflow: hidden;
+	}
+	.assetcard #text #name {
+		width: 100%;
+		height: 150px;
+	}
+	.assetcard #text #money {
+		font-family: Special Elite;
+		font-weight: 600;
+	}
+	.assetcard #text #money span {
+		padding-left: 3px;
+		letter-spacing: 3px;
+	}
+	.assetcard #text h1 {
+		font-family: Vast Shadow;
+		padding-bottom: 0;
+	}
+	.assetcard #text h2 {
+		padding-top: 25px;
+		font-family: Ubuntu;
+		font-weight: 100;
+	}
+	.assetcard #text h3 {
+		padding: 0;
+		padding-top: 5px;
+		font-family: Ubuntu;
+		font-weight: 100;
+	}
+	/* Buy/Pass buttons */
+	.assetcard button {
+		margin-top: 20px;
+		margin-left: 30px;
+		margin-right: 30px;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		text-align: center;
+		font-family: Ubuntu;
+		font-size: 25px;
+		font-weight: 500;
+		letter-spacing: 3px;
+		cursor: pointer;
+	}
+	.assetcard button #aniunderline {
+		height: 2px;
+	}
+
+/* Show the player how much money they have earned/lost */
+#earnings {
+	position: fixed;
+	top: -500px; /* Originally 50px */
+	z-index: 51;
+}
+	/* Current money */
+	#earnings #moneypaper {
+		width: 415px;
+		height: 150px;
+		padding: 5px;
+		padding-top: 30px;
+		position: absolute;
+		top: 0;
+		left: 5px;
+		-ms-transform: rotate(8deg); /* For Edge */
+		-webkit-transform: rotate(8deg); /* For Safari and Chrome */
+		-moz-transform: rotate(8deg); /* For Firefox */
+		-o-transform: rotate(8deg); /* For Opera */
+		transform: rotate(8deg); /* Standard */
+		color: #000;
+		box-shadow: 0 6px 5px rgba(33,33,33,.5);
+		background-color: #FFFFF7;
+		z-index: 52;
+	}
+	#earnings #moneypaper::after {
+		content: "";
+		width: 100%;
+		height: 2px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1.5px;
+		background-color: #FFFFF7;
+		-webkit-clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%); /* For Safari, Chrome, and Opera */
+		clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%); /* Standard */ /* Note that clip-path does not work in Edge */
+	}
+	#earnings #moneypaper h1 {
+		font-family: Special Elite;
+	}
+	/* Money earned/lost */
+	#earnings #hiding {
+		width: 425px;
+		height: 175px;
+		position: absolute;
+		top: 125px;
+		left: 0;
+		overflow-y: hidden;
+	}
+	#earnings #hiding #earningspaper {
+		width: 393px;
+		height: 150px;
+		padding: 5px;
+		padding-top: 30px;
+		position: absolute;
+		top: -200px; /* Originally 0 */
+		left: 15px;
+		color: #000;
+		box-shadow: 0 6px 5px rgba(33,33,33,.5);
+		background-color: #FFFFF0;
+		z-index: 51;
+	}
+	#earnings #hiding #earningspaper h1 {
+		font-family: Special Elite;
+	}
+	#earnings #hiding #earningspaper h1 #gain-loss {
+		font-family: Ubuntu;
+	}
+	#earnings #hiding #earningspaper #payinganother {
+		display: none;
+		margin: 0;
+		margin-left: 60px;
+		padding: 0;
+		font-family: Ubuntu;
+		font-size: 20px;
+		font-weight: 400;
+	}
+	#earnings #hiding #earningspaper #payinganother #topay-money {
+		font-family: Special Elite;
+		font-weight: 900;
+	}
+
+/* Asset cards (these are the ones that the player can buy) */
+#tobuy {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: -100%;
+	align-items: center;
+	justify-content: center;
+	z-index: 25;
+}
+#buy02, #buy03, #buy04, #buy05, #buy06, #buy07, #buy08, #buy10, #buy12, #buy13, #buy14, #buy15, #buy16, #buy18, #buy19, #buy20, #buy21, #buy22, #buy23, #buy24, #buy26, #buy27, #buy28, #buy29, #buy30, #buy32 {
+	display: none;
+}
+
+/* Grant Cards */
+#grantcard {
+	display: none;
+	width: 600px;
+	height: 350px;
+	position: relative;
+	background-color: #FFFFF0;
+	border-radius: 4px;
+	box-shadow: 2px 6px 5px rgba(33, 33, 33, .5);
+}
+#grantcard h1 {
+	margin-top: 10px;
+	text-align: center;
+	font-size: 125px;
+	font-family: Special Elite;
+	color: #41d628;
+	text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+#grantcard h2 {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 75px;
+	font-family: Vast Shadow;
+	font-weight: 100;
+}
+#grantcard h3 {
+	margin: 0;
+	padding: 0;
+	padding-top: 20px;
+	text-align: center;
+	font-size: 35px;
+	font-family: Vast Shadow;
+	font-weight: 100;
+}
+#grantcard button {
+	margin-top: 5px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	text-align: center;
+	font-family: Ubuntu;
+	font-size: 25px;
+	font-weight: 500;
+	letter-spacing: 3px;
+	cursor: pointer;
+}
+#grantcard button #aniunderline {
+	height: 2px;
+}
+
+/* Player can see what Fortune (NPC/AI) is doing throughout the turn */
+#actionwindow {
+	width: 350px;
+	height: 400px;
+	position: fixed;
+	left: 0;
+	bottom: -400px; /* Originally 0 */
+	background: linear-gradient(to top, rgba(224,224,224, 0.9) 85%, rgba(224,224,224, 0) 100%);
+	transition: bottom 0.3s ease-out;
+	z-index: 50;
+}
+#actionwindow #actions {
+	width: 100%;
+	height: 83%;
+	position: absolute;
+	bottom: 0;
+	font-family: Ubuntu;
+	font-size: 16px;
+	overflow: auto;
+}
+
+/* Pay to get out of jail */
+#getout {
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	position: fixed;
+	top: -100%; /* Originally 20% */
+	left: 25%;
+	background-color: #FFFFF0;
+	box-shadow: 2px 6px 5px rgba(33, 33, 33, .5);
+	transition: top 0.4s ease-out;
+	z-index: 51;
+}
+#getout h1 {
+	font-family: Vast Shadow;
+	text-align: center;
+}
+#getout h2 {
+	font-family: Ubuntu;
+	text-align: center;
+	font-weight: 400;
+}
+#getout button {
+	margin-top: 50px;
+	margin-left: 30px;
+	margin-right: 20px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	text-align: center;
+	font-family: Ubuntu;
+	font-size: 23px;
+	font-weight: 500;
+	cursor: pointer;
+}
+#getout button #aniunderline {
+	height: 2px;
+}
+
+/* Exit for when the player is viewing the board (in between Fortune's turn and their turn) */
+#movingexit {
+	display: none;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #000;
+	font-size: 100px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	z-index: 100;
+}
+
+/* Player Space (money, "properties", etc.) */
+#playerspace {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	bottom: -100%;
+	overflow: hidden;
+}
+	/* Sticky Notes */
+	#playerspace .stickynote {
+		display: block;
+		padding: 5px;
+		position: relative;
+		color: #000;
+		text-align: center;
+		font-family: Ubuntu;
+		font-size: 50px;
+		font-weight: 400;
+		box-shadow: 2px 6px 5px rgba(33,33,33,.5);
+		-webkit-transition: -webkit-transform .15s linear, box-shadow .15s; /* For Safari and Chrome */
+		-moz-transition: -moz-transform .15s linear, box-shadow .15s; /* For Firefox */
+		-o-transition: -o-transform .15s linear, box-shadow .15s; /* For Opera */
+		transition: transform .15s linear, box-shadow .15s; /* Standard */
+		cursor: pointer;
+		z-index: 4;
+	}
+	#playerspace .stickynote.tiltleft {
+		-ms-transform: rotate(-3deg); /* For Edge */
+		-webkit-transform: rotate(-3deg); /* For Safari and Chrome */
+		-moz-transform: rotate(-3deg); /* For Firefox */
+		-o-transform: rotate(-3deg); /* For Opera */
+		transform: rotate(-3deg); /* Standard */
+	}
+	#playerspace .stickynote.tiltright {
+		-ms-transform: rotate(4deg); /* For Edge */
+		-webkit-transform: rotate(4deg); /* For Safari and Chrome */
+		-moz-transform: rotate(4deg); /* For Firefox */
+		-o-transform: rotate(4deg); /* For Opera */
+		transform: rotate(4deg); /* Standard */
+	}
+	#playerspace .stickynote:hover, #playerspace .stickynote:focus {
+		position: relative;
+		box-shadow: 10px 10px 7px rgba(0,0,0,.5);
+		-webkit-transform: scale(1.25); /* For Safari and Chrome */
+		-moz-transform: scale(1.25); /* For Firefox */
+		-o-transform: scale(1.25); /* For Opera */
+		transform: scale(1.25); /* Standard */
+		z-index: 5;
+	}
+	#playerspace #menunote {
+		width: 200px;
+		height: 100px;
+		padding-top: 25px;
+		top: 20px;
+		left: 35px;
+		background-color: orange;
+	}
+	#playerspace #viewnote {
+		width: 200px;
+		height: 75px;
+		padding-top: 25px;
+		position: absolute;
+		top: 20px;
+		left: 250px;
+		font-size: 35px;
+		font-weight: 100;
+		background-color: pink;
+	}
+	/* Dice to start turn */
+	#playerspace #startingdice {
+		display: block;
+		position: absolute;
+		top: -200px; /* Originally 20px */
+		left: 275px;
+		cursor: pointer;
+		z-index: 3;
+	}
+	#playerspace #startingdice #dice {
+		width: 70px;
+		height: 70px;
+		position: absolute;
+		border-radius: 5px;
+		background-color: #F8F8F8;
+		box-shadow: 0 6px 5px rgba(33,33,33,.5);
+	}
+	#playerspace #startingdice .first {
+		top: 0;
+		left: 0;
+		-ms-transform: rotate(-25deg); /* For Edge */
+		-webkit-transform: rotate(-25deg); /* For Safari and Chrome */
+		-moz-transform: rotate(-25deg); /* For Firefox */
+		-o-transform: rotate(-25deg); /* For Opera */
+		transform: rotate(-25deg); /* Standard */
+	}
+	#playerspace #startingdice .second {
+		top: 35px;
+		left: 90px;
+		-ms-transform: rotate(10deg); /* For Edge */
+		-webkit-transform: rotate(10deg); /* For Safari and Chrome */
+		-moz-transform: rotate(10deg); /* For Firefox */
+		-o-transform: rotate(10deg); /* For Opera */
+		transform: rotate(10deg); /* Standard */
+	}
+	#playerspace #startingdice #dice .dot {
+		display: inline-block;
+		width: 19px;
+		height: 19px;
+		border-radius: 50%;
+		background: radial-gradient(#555, #000);
+	}
+	#playerspace #startingdice #dice #three .dot {
+		display: block;
+	}
+	#playerspace #startingdice #dice #three #top {
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+	#playerspace #startingdice #dice #three #center {
+		margin-top: 1.5px;
+		margin-left: 25.5px;
+		margin-bottom: 1.5px;
+	}
+	#playerspace #startingdice #dice #three #bottom {
+		margin-left: 46px;
+	}
+	#playerspace #startingdice #dice #four .dot {
+		margin-top: 8px;
+		margin-left: 8px;
+		margin-right: 8px;
+		margin-bottom: 8px;
+	}
+	/* Money Displays */
+	#playerspace .moneydisplay {
+		width: 415px;
+		height: 150px;
+		padding: 5px;
+		padding-top: 30px;
+		position: relative;
+		color: #000;
+		box-shadow: 0 6px 5px rgba(33,33,33,.5);
+		background-color: #FFFFF0;
+	}
+	#playerspace .moneydisplay::after {
+		content: "";
+		width: 100%;
+		height: 2px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1.5px;
+		background-color: #FFFFF0;
+		-webkit-clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%); /* For Safari, Chrome, and Opera */
+		clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%); /* Standard */ /* Note that clip-path does not work in Edge */
+	}
+	#playerspace .moneydisplay h1 {
+		font-family: Special Elite;
+	}
+	#playerspace .moneydisplay h2 {
+		margin: 0;
+		margin-left: 10px;
+		font-family: Londrina Solid;
+		font-weight: 100;
+	}
+		/* Player's Money */
+		#playerspace #accountingpaper {
+			top: 100px;
+			left: 5px;
+			-ms-transform: rotate(8deg); /* For Edge */
+			-webkit-transform: rotate(8deg); /* For Safari and Chrome */
+			-moz-transform: rotate(8deg); /* For Firefox */
+			-o-transform: rotate(8deg); /* For Opera */
+			transform: rotate(8deg); /* Standard */
+			z-index: 2;
+		}
+		/* Fortune's (NPC/AI) Money */
+		#playerspace #aipaper {
+			margin-top: -25px;
+			top: 125px;
+			left: 25px;
+			-ms-transform: rotate(-5deg); /* For Edge */
+			-webkit-transform: rotate(-5deg); /* For Safari and Chrome */
+			-moz-transform: rotate(-5deg); /* For Firefox */
+			-o-transform: rotate(-5deg); /* For Opera */
+			transform: rotate(-5deg); /* Standard */
+			z-index: 1;
+		}
+	/* List of assets that Fortune owns */
+	#playerspace #aiassets {
+		width: 367px;
+		height: 200px;
+		padding: 5px;
+		padding-top: 27px;
+		position: relative;
+		top: 100px;
+		left: 75px;
+		-ms-transform: rotate(3deg); /* For Edge */
+		-webkit-transform: rotate(3deg); /* For Safari and Chrome */
+		-moz-transform: rotate(3deg); /* For Firefox */
+		-o-transform: rotate(3deg); /* For Opera */
+		transform: rotate(3deg); /* Standard */
+		color: #000;
+		box-shadow: 0 6px 5px rgba(33,33,33,.5);
+		background-color: #FFFFF0;
+		z-index: 0;
+	}
+	#playerspace #aiassets::after {
+		content: "";
+		width: 100%;
+		height: 2px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1.5px;
+		background-color: #FFFFF0;
+		-webkit-clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%); /* For Safari, Chrome, and Opera */
+		clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%); /* Standard */ /* Note that clip-path does not work in Edge */
+	}
+	#playerspace #aiassets h2 {
+		margin: 0;
+		margin-right: 35px;
+		font-family: Londrina Solid;
+		text-align: right;
+		font-weight: 100;
+	}
+	#playerspace #aiassets #scrolling {
+		width: 100%;
+		height: 140px;
+		padding-left: 15px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		overflow: auto;
+	}
+	#playerspace #aiassets #scrolling ul {
+		padding-left: 0;
+		font-family: Ubuntu;
+		font-size: 17px;
+	}
+	#playerspace #aiassets #scrolling ul li ul {
+		padding-left: 65px;
+		font-family: Ubuntu;
+		font-size: 20px;
+		font-weight: 700;
+	}
+	#ai-red, #ai-orange, #ai-yellow, #ai-lime, #ai-green, #ai-turquoise, #ai-blue, #ai-violet, #ai-ad {
+		display: none;
+	}
+	/* Asset cards (these are the ones that the player owns) */
+	#playerspace #container {
+		width: 960px;
+		height: 91%;
+		padding: 0;
+		padding-left: 20px;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		z-index: 3;
+	}
+	#playerspace #container .assetcard {
+		margin-top: -90px;
+		margin-left: -75px;
+		margin-right: -75px;
+		margin-bottom: -125px;
+		-webkit-transform: scale(0.55); /* For Safari and Chrome */
+		-webkit-transition: -webkit-transform .15s linear, box-shadow .15s;
+		-moz-transform: scale(0.55); /* For Firefox */
+		-moz-transition: -moz-transform .15s linear, box-shadow .15s;
+		-o-transform: scale(0.55); /* For Opera */
+		-o-transition: -o-transform .15s linear, box-shadow .15s;
+		transform: scale(0.55); /* Standard */
+		transition: transform .15s linear, box-shadow .15s;
+	}
+	#playerspace #container .assetcard:hover, #playerspace #container .assetcard:focus {
+		position: relative;
+		box-shadow: 10px 10px 7px rgba(0,0,0,.5);
+		-webkit-transform: scale(0.7); /* For Safari and Chrome */
+		-moz-transform: scale(0.7); /* For Firefox */
+		-o-transform: scale(0.7); /* For Opera */
+		transform: scale(0.7); /* Standard */
+		z-index: 5;
+	}
+	#p02, #p03, #p04, #p05, #p06, #p07, #p08, #p10, #p12, #p13, #p14, #p15, #p16, #p18, #p19, #p20, #p21, #p22, #p23, #p24, #p26, #p27, #p28, #p29, #p30, #p32 {
+		display: none;
+	}
+
+/* Menu */
+#menu {
+	display: none;
+	width: 100%;
+	height: 100%;
+	z-index: 90;
+}
+#menu h6 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: right;
+	color: gray;
+	font-family: Ubuntu;
+	font-size: 10px;
+	font-weight: 100;
+	cursor: default;
+}
+#menu a {
+	font-family: Ubuntu;
+	color: gray;
+	text-decoration: none;
+}
+#menu a:hover {
+	text-decoration: underline;
+}
+	#boxcover #side1 #information #description #container {
+		width: 300px;
+		padding-left: 20px;
+	}
+	#boxcover #side1 #information #description #container button {
+		display: block;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		position: relative;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		text-align: center;
+		color: #FFFFFF;
+		font-family: Ubuntu;
+		font-size: 60px;
+		font-weight: 500;
+		letter-spacing: 3px;
+		cursor: pointer;
+	}
+	#boxcover #side1 #information #description #container button #aniunderline {
+		background-color: #FFFFFF;
+	}
+	#boxcover #side1 #information #description #container #shortcuts {
+		position: absolute;
+		left: 250px;
+		bottom: 10px;
+		font-size: 40px;
+	}
+
+/* Bankruptcy */
+#bankruptcy {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: -200%;
+	background-color: #000;
+	opacity: 0;
+	z-index: 200;
+	transition: opacity 1s;
+}
+#bankruptcy #starter {
+	margin-top: 18%;
+	margin-bottom: 15px;
+	color: #FFFFFF;
+	font-family: Ubuntu;
+	font-size: 30px;
+	text-align: center;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+#bankruptcy #textb {
+	color: #FFFFFF;
+	font-family: Ubuntu;
+	font-size: 110px;
+	text-align: center;
+}
+/* Player Wins! */
+#youwin {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: -200%;
+	background-color: #FFFFFF;
+	opacity: 0;
+	z-index: 200;
+	transition: opacity 1s;
+}
+#youwin #starter {
+	margin-top: 18%;
+	margin-bottom: 15px;
+	color: #000;
+	font-family: Ubuntu;
+	font-size: 30px;
+	text-align: center;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+#youwin #textw {
+	color: #000;
+	font-family: Ubuntu;
+	font-size: 110px;
+	text-align: center;
+}
+
+/* Credits */
+#credits {
+	width: 100%;
+	height: 3900px;
+	position: fixed;
+	bottom: -4000px;
+	background-color: burlywood;
+	z-index: 300;
+}
+	/* Header */
+	#credits .card #heading {
+		padding-top: 30px;
+		font-size: 50px;
+	}
+	#credits #c1 #heading, #credits #dedication #heading {
+		background: linear-gradient(to top, #F5F5F5 25%, #FFFFF0 100%);
+	}
+	#credits #c2 #heading {
+		background: linear-gradient(to top, #3DEB85 25%, #FFFFF0 100%);
+	}
+	#credits #c3 #heading {
+		background: linear-gradient(to top, #FFA500 25%, #FFFFF0 100%);
+	}
+	#credits #c4 #heading {
+		background: linear-gradient(to top, #EE82EE 25%, #FFFFF0 100%);
+	}
+	/* Text */
+	#credits .card #text h1 {
+		font-family: Vast Shadow;
+		padding-bottom: 0;
+		font-weight: 100;
+	}
+	#credits .card #text h3 {
+		padding: 0;
+		font-family: Ubuntu;
+		font-weight: 100;
+	}
+#credits #c1 {
+	top: 50px;
+	left: 40%;
+	z-index: 5;
+}
+#credits #c2 {
+	top: 20px;
+	left: 60%;
+	-ms-transform: rotate(4deg); /* For Edge */
+	-webkit-transform: rotate(4deg); /* For Safari and Chrome */
+	-moz-transform: rotate(4deg); /* For Firefox */
+	-o-transform: rotate(4deg); /* For Opera */
+	transform: rotate(4deg); /* Standard */
+	z-index: 4;
+}
+#credits #c3 {
+	left: 25%;
+	-ms-transform: rotate(-7deg); /* For Edge */
+	-webkit-transform: rotate(-7deg); /* For Safari and Chrome */
+	-moz-transform: rotate(-7deg); /* For Firefox */
+	-o-transform: rotate(-7deg); /* For Opera */
+	transform: rotate(-7deg); /* Standard */
+	z-index: 3;
+}
+#credits #c4 {
+	top: -5px;
+	left: 35%;
+	-ms-transform: rotate(4deg); /* For Edge */
+	-webkit-transform: rotate(4deg); /* For Safari and Chrome */
+	-moz-transform: rotate(4deg); /* For Firefox */
+	-o-transform: rotate(4deg); /* For Opera */
+	transform: rotate(4deg); /* Standard */
+	z-index: 2;
+}
+#credits #dedication {
+	top: 200px;
+	left: 50%;
+	-ms-transform: rotate(-1deg); /* For Edge */
+	-webkit-transform: rotate(-1deg); /* For Safari and Chrome */
+	-moz-transform: rotate(-1deg); /* For Firefox */
+	-o-transform: rotate(-1deg); /* For Opera */
+	transform: rotate(-1deg); /* Standard */
+	z-index: 1;
+}
+#credits #dedication #heading {
+	height: 170px;
+	padding-top: 50px;
+	font-size: 60px;
+}
+#credits #dedication #text {
+	top: 10px;
+}
+#credits #dedication #text #name {
+	height: 100px;
+}
+	/* Thank You for Playing */
+	#credits #thanks {
+		width: 700px;
+		height: 400px;
+		margin: 0 auto;
+		margin-top: 100px;
+		padding-top: 100px;
+		position: relative;
+		top: 700px;
+		background-color: #FFFFF0;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		z-index: 50;
+	}
+	#credits #thanks h1 {
+		margin: 0;
+		font-family: Ubuntu;
+		font-size: 70px;
+		text-align: center;
+	}
+	#credits #thanks h2 {
+		margin: 0;
+		font-family: Ubuntu;
+		font-size: 45px;
+		text-align: center;
+		font-weight: 500;
+	}
+
+
+/* Changes due to screen size */
+@media only screen and (max-width: 1366px) {
+	#playerspace #accountingpaper {
+		top: 75px;
+	}
+	#playerspace #aipaper {
+		top: 80px;
+	}
+	#playerspace #aiassets {
+		top: 55px;
+	}
+	#playerspace #container {
+		height: 102.83%;
+		-ms-transform: scale(0.87); /* For Edge */
+		-ms-transform-origin: right bottom;
+		-webkit-transform: scale(0.87); /* For Safari and Chrome */
+		-webkit-transform-origin: right bottom;
+		-moz-transform: scale(0.87); /* For Firefox */
+		-moz-transform-origin: right bottom;
+		-o-transform: scale(0.87); /* For Opera */
+		-o-transform-origin: right bottom;
+		transform: scale(0.87); /* Standard */
+		transform-origin: right bottom;
+	}
+}
+@media only screen and (max-width: 1280px) {
+	#gamebox {
+		-ms-transform: scale(0.95); /* For Edge */
+		-ms-transform-origin: left top;
+		-webkit-transform: scale(0.95); /* For Safari and Chrome */
+		-webkit-transform-origin: left top;
+		-moz-transform: scale(0.95); /* For Firefox */
+		-moz-transform-origin: left top;
+		-o-transform: scale(0.95); /* For Opera */
+		-o-transform-origin: left top;
+		transform: scale(0.95); /* Standard */
+		transform-origin: left top;
+	}
+	
+	#board {
+		-ms-transform: scale(0.95) rotate(3deg); /* For Edge */
+		-webkit-transform: scale(0.95) rotate(3deg); /* For Safari and Chrome */
+		-moz-transform: scale(0.95) rotate(3deg); /* For Firefox */
+		-o-transform: scale(0.95) rotate(3deg); /* For Opera */
+		transform: scale(0.95) rotate(3deg); /* Standard */
+	}
+	
+	#ownerpaper {
+		-ms-transform: scale(0.95) rotate(5deg); /* For Edge */
+		-ms-transform-origin: right top;
+		-webkit-transform: scale(0.95) rotate(5deg); /* For Safari and Chrome */
+		-webkit-transform-origin: right top;
+		-moz-transform: scale(0.95) rotate(5deg); /* For Firefox */
+		-moz-transform-origin: right top;
+		-o-transform: scale(0.95) rotate(5deg); /* For Opera */
+		-o-transform-origin: right top;
+		transform: scale(0.95) rotate(5deg); /* Standard */
+		transform-origin: right top;
+	}
+	
+	#earnings {
+		margin-top: -10px;
+		-ms-transform: scale(0.95); /* For Edge */
+		-ms-transform-origin: left top;
+		-webkit-transform: scale(0.95); /* For Safari and Chrome */
+		-webkit-transform-origin: left top;
+		-moz-transform: scale(0.95); /* For Firefox */
+		-moz-transform-origin: left top;
+		-o-transform: scale(0.95); /* For Opera */
+		-o-transform-origin: left top;
+		transform: scale(0.95); /* Standard */
+		transform-origin: left top;
+	}
+	
+	#playerspace .stickynote.tiltleft {
+		-ms-transform: scale(0.75) rotate(-3deg); /* For Edge */
+		-webkit-transform: scale(0.75) rotate(-3deg); /* For Safari and Chrome */
+		-moz-transform: scale(0.75) rotate(-3deg); /* For Firefox */
+		-o-transform: scale(0.75) rotate(-3deg); /* For Opera */
+		transform: scale(0.75) rotate(-3deg); /* Standard */
+	}
+	#playerspace .stickynote.tiltright {
+		-ms-transform: scale(0.8) rotate(4deg); /* For Edge */
+		-webkit-transform: scale(0.8) rotate(4deg); /* For Safari and Chrome */
+		-moz-transform: scale(0.8) rotate(4deg); /* For Firefox */
+		-o-transform: scale(0.8) rotate(4deg); /* For Opera */
+		transform: scale(0.8) rotate(4deg); /* Standard */
+	}
+	#playerspace .stickynote:hover, #playerspace .stickynote:focus {
+		-ms-transform: scale(1); /* For Edge */
+		-webkit-transform: scale(1); /* For Safari and Chrome */
+		-moz-transform: scale(1); /* For Firefox */
+		-o-transform: scale(1); /* For Opera */
+		transform: scale(1); /* Standard */
+	}
+	#playerspace #menunote {
+		top: 13px;
+		left: 15px;
+	}
+	#playerspace #viewnote {
+		top: 13px;
+		left: 200px;
+	}
+	#playerspace #startingdice {
+		left: 200px;
+	}
+	#playerspace #accountingpaper {
+		left: -13px;
+		-ms-transform: scale(0.95) rotate(8deg); /* For Edge */
+		-webkit-transform: scale(0.95) rotate(8deg); /* For Safari and Chrome */
+		-moz-transform: scale(0.95) rotate(8deg); /* For Firefox */
+		-o-transform: scale(0.95) rotate(8deg); /* For Opera */
+		transform: scale(0.95) rotate(8deg); /* Standard */
+	}
+	#playerspace #aipaper {
+		left: 0;
+		-ms-transform: scale(0.95) rotate(-5deg); /* For Edge */
+		-webkit-transform: scale(0.95) rotate(-5deg); /* For Safari and Chrome */
+		-moz-transform: scale(0.95) rotate(-5deg); /* For Firefox */
+		-o-transform: scale(0.95) rotate(-5deg); /* For Opera */
+		transform: scale(0.95) rotate(-5deg); /* Standard */
+	}
+	#playerspace #aiassets {
+		top: 45px;
+		left: 48px;
+		-ms-transform: scale(0.95) rotate(3deg); /* For Edge */
+		-webkit-transform: scale(0.95) rotate(3deg); /* For Safari and Chrome */
+		-moz-transform: scale(0.95) rotate(3deg); /* For Firefox */
+		-o-transform: scale(0.95) rotate(3deg); /* For Opera */
+		transform: scale(0.95) rotate(3deg); /* Standard */
+	}
+	#playerspace #container {
+		height: 109.2%;
+		-ms-transform: scale(0.8); /* For Edge */
+		-webkit-transform: scale(0.8); /* For Safari and Chrome */
+		-moz-transform: scale(0.8); /* For Firefox */
+		-o-transform: scale(0.8); /* For Opera */
+		transform: scale(0.8); /* Standard */
+	}
+}
+@media only screen and (max-width: 1260px), (max-height: 625px) {
+	#resize {
+		display: block;
+	}
+}

@@ -1,0 +1,194 @@
+/* CSS file for .html files that are separate from the actual gameplay */
+
+html { -ms-user-select:none; /* For Edge */  -webkit-user-select:none; /* For Safari and Chrome */  -moz-user-select:none; /* For Firefox */  -o-user-select:none; /* For Opera */  user-select:none; /* Standard */ }
+body { max-width:100%; max-height:100%; margin:0 auto; position:fixed; left:0; top:0; }
+
+#keymap { width:475px; height:550px; background-color:#505050; color:#FFFFFF; font-family:Ubuntu; font-size:22px; cursor:default; }
+
+#instructions { width:1100px; height:700px; background-color:burlywood; cursor:default; }
+
+* {
+	box-sizing: border-box;
+}
+
+
+/* Keyboard Shortcuts Map */
+#keymap p {
+	margin: 0;
+	margin-bottom: 10px;
+}
+#keymap #outset {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+	margin-right: 2.5px;
+	position: relative;
+	vertical-align: middle;
+	border: 1px solid #FFFFFF;
+	border-radius: 5px;
+	background: linear-gradient(to bottom right, #F5F5F5 45%, #D3D3D3);
+}
+#keymap #outset #press {
+	width: 37.5px;
+	height: 35px;
+	padding-top: 3.5px;
+	position: absolute;
+	top: 5px;
+	left: 4px;
+	border: 2px solid #E8E8E8;
+	border-radius: 6px;
+	background: radial-gradient(#FFFFFF, #F8F8F8);
+	color: #000;
+	text-align: center;
+	font-family: Arial;
+	font-size: 20px;
+}
+
+/* Instructions */
+	/* Instructions on how to navigate (header) */
+	#instructions header {
+		width: 100%;
+		height: 90px;
+		padding-top: 10px;
+		background-color: transparent;
+	}
+	#instructions header p {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		font-family: Ubuntu;
+		font-size: 40px;
+		line-height: 60px;
+	}
+	#instructions header #outset {
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		margin: 0;
+		margin-top: -15px;
+		position: relative;
+		vertical-align: middle;
+		border: 1px solid #FFFFFF;
+		border-radius: 5px;
+		background: linear-gradient(to bottom right, #F5F5F5 45%, #D3D3D3);
+		cursor: pointer;
+	}
+	#instructions header #outset #press {
+		width: 37.5px;
+		height: 35px;
+		padding-top: 3.5px;
+		position: absolute;
+		top: 5px;
+		left: 4px;
+		border: 2px solid #E8E8E8;
+		border-radius: 6px;
+		background: radial-gradient(#FFFFFF, #F8F8F8);
+		color: #000;
+		text-align: center;
+		font-family: Arial;
+		font-size: 20px;
+	}
+	/* Actual Content */
+	#instructions article {
+		width: 100%;
+		height: 610px;
+		margin: 0;
+		position: relative;
+		overflow: hidden;
+	}
+	#instructions article h1 {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		font-family: Ubuntu;
+		font-size: 100px;
+		font-weight: 500;
+	}
+	#instructions article h2 {
+		margin: 0;
+		margin-top: 20px;
+		margin-left: 50px;
+		padding: 0;
+		font-family: Ubuntu;
+		font-size: 50px;
+		font-weight: 100;
+	}
+	#instructions article h3 {
+		display: inline-block;
+		margin: 0;
+		margin-left: 45px;
+		padding: 0;
+		font-family: Times New Roman;
+		font-size: 75px;
+	}
+	#instructions article h4 {
+		margin: 0;
+		margin-left: 45px;
+		padding: 0;
+		font-family: Times New Roman;
+		font-size: 35px;
+	}
+	#instructions article p {
+		font-family: Ubuntu;
+		font-size: 23px;
+		font-weight: 100;
+	}
+	#instructions article ul li {
+		font-family: Ubuntu;
+		font-size: 20px;
+		font-weight: 100;
+	}
+	#instructions article table {
+		font-family: Ubuntu;
+	}
+	#instructions article section {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		position: absolute;
+		background-color: #FFF5EE;
+		overflow: hidden;
+	}
+		#instructions article #info1 {
+			right: 0;
+			z-index: 1;
+		}
+		#instructions article #info2 {
+			right: -100%;
+			z-index: 2;
+		}
+		#instructions article #info3 {
+			right: -100%;
+			z-index: 3;
+		}
+		#instructions article #info4 {
+			right: -100%;
+			z-index: 4;
+		}
+		#instructions article #info5 {
+			right: -100%;
+			z-index: 5;
+		}
+	#instructions article section .left {
+		width: 50%;
+		height: 100%;
+		margin: 0;
+		padding-top: 2.5px;
+		padding-left: 25px;
+		padding-right: 10px;
+		position: absolute;
+		left: 0;
+		overflow: hidden;
+	}
+	#instructions article section .right {
+		width: 50%;
+		height: 100%;
+		margin: 0;
+		padding-top: 2.5px;
+		padding-left: 10px;
+		padding-right: 25px;
+		position: absolute;
+		right: 0;
+		overflow: hidden;
+	}

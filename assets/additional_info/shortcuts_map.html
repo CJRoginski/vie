@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial scale=1">
+	
+	<!-- Set webpage title -->
+	<title>Keyboard Shortcuts</title>
+
+	<!-- CSS File -->
+	<link rel="stylesheet" href="../css/fonts/fonts.css"><!-- Font declarations for offline use -->
+	<link rel="stylesheet" href="css/separate_design.css"><!-- CSS file for .html files that are separate from the actual gameplay -->
+
+	<!-- JavaScript Files -->
+	<script src="../javascript/jquery.js"></script><!-- jQuery version 3.3.1 -->
+</head>
+
+<body id="keymap">
+	<p><div id="outset"><div id="press">esc</div></div>: return to title screen, close game</p>
+	
+	<p><div id="outset"><div id="press">A</div></div>: choose letter choice "A"</p>
+	
+	<p><div id="outset"><div id="press">B</div></div>: choose letter choice "B"</p>
+	
+	<p><div id="outset"><div id="press">C</div></div>: choose letter choice "C"</p>
+	
+	<p><div id="outset"><div id="press">D</div></div>: choose letter choice "D"</p>
+	
+	<p><div id="outset"><div id="press">T</div></div>: choose T/F choice "true"</p>
+	
+	<p><div id="outset"><div id="press">F</div></div>: choose T/F choice "false"</p>
+
+<script>
+	document.addEventListener('keydown', function(esc) {
+		if (esc.keyCode == 27) {
+			close();
+		}
+	});
+</script>
+
+</body>
+
+</html>

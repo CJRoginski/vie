@@ -1,0 +1,111 @@
+/* Fonts are defined here */ /* @import links will not be used in the online version */
+
+/* Libre Barcode 39 */
+	@font-face {
+		font-family: "Libre Barcode";
+		src: url("libre_barcode_39/LibreBarcode39-Regular.woff");
+		font-weight: normal;
+	}
+
+/* Londrina Solid */
+	/* Thin */
+	@font-face {
+		font-family: "Londrina Solid";
+		src: url("londrina_solid/LondrinaSolid-Thin.woff");
+		font-weight: 100;
+	}
+	
+	/* Light */
+	@font-face {
+		font-family: "Londrina Solid";
+		src: url("londrina_solid/LondrinaSolid-Light.woff");
+		font-weight: 300;
+	}
+	
+	/* Regular */
+	@font-face {
+		font-family: "Londrina Solid";
+		src: url("londrina_solid/LondrinaSolid-Regular.woff");
+		font-weight: 400;
+	}
+	
+	/* Bold */
+	@font-face {
+		font-family: "Londrina Solid";
+		src: url("londrina_solid/LondrinaSolid-Black.woff");
+		font-weight: 700;
+	}
+
+/* Special Elite */
+	@font-face {
+		font-family: "Special Elite";
+		src: url("special_elite/SpecialElite-Regular.woff");
+		font-weight: 400;
+	}
+
+/* Ubuntu */
+	/* Light */
+		/* Normal */
+		@font-face {
+			font-family: "Ubuntu";
+			src: url("ubuntu/Ubuntu-Light.woff");
+			font-weight: 300;
+		}
+		/* Italic */
+		@font-face {
+			font-family: "Ubuntu";
+			src: url("ubuntu/Ubuntu-LightItalic.woff");
+			font-weight: 300;
+			font-style: italic;
+		}
+	
+	/* Regular */
+		/* Normal */
+		@font-face {
+			font-family: "Ubuntu";
+			src: url("ubuntu/Ubuntu-Regular.woff");
+			font-weight: 400;
+		}
+		/* Italic */
+		@font-face {
+			font-family: "Ubuntu";
+			src: url("ubuntu/Ubuntu-Italic.woff");
+			font-weight: 400;
+			font-style: italic;
+		}
+	
+	/* Medium */
+		/* Normal */
+		@font-face {
+			font-family: "Ubuntu";
+			src: url("ubuntu/Ubuntu-Medium.woff");
+			font-weight: 500;
+		}
+		/* Italic */
+		@font-face {
+			font-family: "Ubuntu";
+			src: url("ubuntu/Ubuntu-MediumItalic.woff");
+			font-weight: 500;
+			font-style: italic;
+		}
+	
+	/* Bold */
+	@font-face {
+		font-family: "Ubuntu";
+		src: url("ubuntu/Ubuntu-Bold.woff");
+		font-weight: 700;
+	}
+
+/* Vast Shadow */
+	@font-face {
+		font-family: "Vast Shadow";
+		src: url("vast_shadow/VastShadow-Regular.woff");
+		font-weight: 400;
+	}
+
+/* Wallpoet */
+	@font-face {
+		font-family: "Wallpoet";
+		src: url("wallpoet/Wallpoet-Regular.woff");
+		font-weight: 400;
+	}

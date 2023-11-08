@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+
+                                                                            -+`                      
+                                                                        ./syo                       
+                                                                     `:oyyyy:                       
+                                                                   -+syyyyyy`                       
+                                                                ./syyyyyyyy+                        
+                                                             `:osyyyyyyys/`                         
+                                                          `-+syyyyyyys+-                            
+                                                       `-+syyyyyyyy+:`                              
+                               .:///-               `-+syyyyyyyyo:`                                 
+                           .:+ssyyyyy            `-+syyyyyyyyo/.         .                          
+                       `-/osyyyyyyyyo        `.:osyyyyyyyyo/.`        ./oo                          
+                    .:+ssyyyyysossyyo    `.:+ssyyyyyyys+:.`        ./osyy:                          
+                `.:osyyyyso/-.```.yys+++ossyyyyyyyyo+-`         ./osyyyyy`                          
+  `...........-/osyyyyo+-``      .yyyyyyyyyyyyso+:.`        `./osyyyyyys/                           
+  oyhhhhhhhyysyyyys+:.`          -yyyyyyyso+/-``         `-/osyyyyyys+-`                            
+  hhhhhhhyyyyyyo/-`       `.-/+oosyyo+/:.``          `.:+syyyyyyyo/-`                               
+ `hhhhyyyyyso/.`      `-/ossyyyyyyyo             `.:+osyyyyyyso/.`                                  
+ -hyyyyyso/.`     `-/osyyyyssooosyy/        `.-/+osyyyyyyso+-`                                      
+ :yyyso/.`     .:+syyyso+/-.````.oy+.``..-/+osyyyyyyyso+:.`                                         
+ /so/.`    `./osyyyo+:.`         :yyssssyyyyyyyyyso+:.`                                             
+ :.`    `-/osyyso/.`    `.       /yyyyyyyyyyso+/-.`                                                 
+     `-+syyys+-.   `.:+sys       +yyyysoo+:-.`                                                      
+  `:+syyyo+-`   `-+shhhhh-       .::-..`                                                            
+-osyyso/-`  `./syhhhhhhhy                                                                           
++yys/-`  `-+shhhhhhhhhhh:                                                                           
+o+-`  `-+yhhhhhhhhhhhhhh`                                                                           
+`    `:////////////////-            ``..............`  `````````````     ........`         ``       
+                                    .-ohhho//////+yh+ `.-yhhh+:::/oso/` `-/hhhh+:`        -sh-      
+                                      ohhy        `h.   `yhhs      +hhy`   hhh:         `+hhho      
+                                     -hhh-     `   -    +hhh.      +hhh.  -hhy         :s/shhh.     
+                                     shho    `:/       -hhh/    ``/hhs:   shh/       .os. -hhh+     
+                                    :hhh+//+osy`      `yhhh///+oyy+:.    .hhh`      /y/    shhh`    
+                                   `hhh/....:h-       +hhh.   `.+hhs:    ohh+     .ss.`````:hhh/    
+                                   +hhy     ./       .hhh/       +hhh:  `hhh.   `+y+////////hhhh`   
+                                  .hhh-              yhhs        ohhh:  /hhs   -yo`         /hhh:   
+                                  shho              +hhh.      `+hhy/   yhh- .oh/           `hhhy   
+                               `.+hhh+.`         `-+hhhho/://+syo/-    :hhh-+hhy-.`  +`   .-/hhhho-.
+                               .........          ```````````          shh/```````  oo    ``````````
+                                                                      -hhh.      `:yh.              
+                                                                    -+hhhhhysssyhhhho               
+
+-->
+
+<head>
+	<!-- Metadata -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial scale=1">
+	<meta name="author" content="Jessica Roginski">
+	<meta name="keywords" content="vie,vie the amazing online board game,fbla,board game,board games,monopoly,competition,computer game and simulation programming,apalachee,apalachee high school,apalachee hs,apalachee fbla">
+	<meta name="description" content="You are an aspiring entrepreneur with dreams of having a business that so perfectly fits the American dream. The only problem? Your childhood rival, Fortune, is doing the exact same thing! Using the knowledge you gained in Future Business Leaders of America and your high school business classes, nothing can stop you from creating a bigger and more successful business than Fortune.">
+	
+	<!-- Set webpage title -->
+	<title>Vie &mdash; The Amazing Online Board Game (Single Player)</title>
+	
+	<!-- The base URL for all relative files -->
+	<base href="../assets/">
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="css/fonts/fonts.css"><!-- Font declarations for offline use -->
+	<link rel="stylesheet" href="css/game_design.css"><!-- Normal CSS file -->
+
+	<!-- JavaScript Files -->
+	<script src="javascript/jquery.js"></script><!-- jQuery version 3.3.1 -->
+	<script src="javascript/innerworkings.js"></script>
+	<script src="javascript/singleplayer/basic.js"></script><!-- Single player only -->
+	<script src="javascript/businessassets.js"></script>
+	<script src="javascript/singleplayer/non_player_character.js"></script><!-- Single player only -->
+	<script src="javascript/questions.js"></script>
+</head>
+
+<body>
+	<div id="online">
+		<div id="message">
+			<h1>There is an online version of this amazing game!</h1>
+			<h3>Which version would you like to play?</h3>
+			
+			<p style="text-align:center;"><button onclick="onlineversion_singleplayer()">Play Online<div id="aniunderline"></div></button><button onclick="dismiss()">Play Offline<div id="aniunderline"></div></button></p>
+		</div>
+	</div>
+	
+	<!-- Pop-ups to alert the player of environmental flaws that need to be fixed -->
+		<div id="mobile" class="flaw">
+			<div id="message">
+				<div id="container">
+					<h1>This game was built to be played on a computer.</h1>
+					
+					<p>
+						If you are currently viewing this on a tablet or mobile device, please open this game on a computer to enjoy this game to the fullest!
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="resize" class="flaw">
+			<div id="message">
+				<div id="container">
+					<h1>This game was built to be played on a computer</h1>
+					<h3>with a minimum screen width of 1280 pixels and height of 768 pixels.</h3>
+					
+					<p id="saywhat">
+						Your computer has a screen width of <span id="swidth"></span> and a height of <span id="sheight"></span>.
+						<br>
+						You can either open this game on a computer with a larger screen size or you can go into your browser's settings and zoom out on the page to enjoy this game to the fullest!
+					</p>
+				</div>
+			</div>
+		</div>
+		<noscript>
+			<div id="nojs" class="flaw">
+				<div id="message">
+					<div id="container">
+						<h1>This game was created using HTML, CSS, and JavaScript.</h1>
+						<h3>Unfortunately, your browser either does not have scripts enabled or it does not support scripts.</h3>
+						
+						<p>
+							Please enable scripts or open this game in a different browser to enjoy this game to the fullest!
+						</p>
+					</div>
+				</div>
+			</div>
+		</noscript>
+	
+	<section id="titlescreen">
+		<div id="gamebox">
+			<div id="boxcover">
+				<div id="front">
+					<div id="designs">
+						<div id="v"><div id="tuxleft"></div><div id="bow"></div><h1>V</h1><div id="tuxright"></div></div>
+						<h1 style="display:inline-block; margin-left:-100px; color:#FFFFFF; z-index:2;">ie</h1>
+					
+						<div id="side">
+							The amazing<br>online board<br>game where<br><span style="font-size:27px; font-weight:900; letter-spacing:2px;">capitalism</span><br>comes to life!
+							<button id="startbtn" onclick="getthisgamestarted()">PLAY<div id="aniunderline"></div></button>
+						</div>
+					</div>
+				</div>
+				<div id="side1">
+					<div id="information">
+						<div id="description">
+							<p>
+								You are an aspiring entrepreneur with dreams of having a business that so perfectly fits the American dream.
+							</p>
+							<p>
+								The only problem? Your childhood rival, Fortune, is doing the exact same thing! Using the knowledge you gained in Future Business Leaders of America and your high school business classes, nothing can stop you from creating a bigger and more successful business than Fortune.
+							</p>
+						</div>
+						<div id="fakebarcode">fbla</div>
+					</div>
+				</div>
+				<div id="side2"></div>
+				<div id="shadow"></div>
+			</div>
+			<div id="pamphlet" onclick="instructions()">
+				<div id="cover">
+					<div id="designs">
+						RULEBOOK
+					</div>
+				</div>
+				<div id="page1" class="page"></div>
+				<div id="page2" class="page"></div>
+			</div>
+			<button id="exitgame" onclick="end()">EXIT GAME<div id="aniunderline"></div></button>
+		</div>
+		
+		<div id="choose">
+			<div id="difficulty">
+				<h1 style="margin-top:25px; font-size:60px; text-align:center;">Choose your starting difficulty</h1>
+				
+				<div id="cardcontainer">
+					<div id="easy" class="card" onclick="set('easy')" title="Click to start with the easy difficulty">
+						<div id="heading">Easy</div>
+						<div id="text">
+							<div id="name"><h1>Recommended for FBLA members that still have a lot to learn</h1></div>
+							<h2>Start here if you want to play the full game, which will go though all of the question difficulties. This setting is the longest.</h2>
+						</div>
+					</div>
+					<div id="medium" class="card" onclick="set('medium')" title="Click to start with the medium difficulty">
+						<div id="heading">Medium</div>
+						<div id="text">
+							<div id="name"><h1>Recommended for members that know a fair amount about FBLA</h1></div>
+							<h2>Start here if you want to play the some of the game, going though only the medium and hard question.</h2>
+						</div>
+					</div>
+					<div id="hard" class="card" onclick="set('hard')" title="Click to start with the hard difficulty">
+						<div id="heading">Hard</div>
+						<div id="text">
+							<div id="name"><h1>Recommended for members who are a walking FBLA encyclopedia</h1></div>
+							<h2>Play only if you are super confident in your FBLA knowledge and will go through only the hard questions. This setting is the shortest.</h2>
+						</div>
+					</div>
+					
+					<p style="text-align:center;"><button id="continue" class="diffcont" onmouseover="document.getElementById('diffprompt').style.opacity='1';">
+						<div id="container">Continue<br>&nbsp;<sup><sup>with&nbsp;&nbsp;</sup></sup><span id="difftype" class="type">EASY</span></div>
+						<div id="diffprompt" class="prompt">&#10095;</div>
+					</button></p>
+				</div>
+			</div>
+			
+			<div id="pawncolor">
+				<h1 style="margin-top:25px; font-size:60px; text-align:center;">Choose your pawn color</h1>
+				
+				<div id="pawncontainer">
+					<button style="top:60px;" onclick="setpawncolor('red', '#FF3C1A', '#CC1F00')" title="Click to play with the red pawn"><div id="red" class="gamepiece">
+						<div id="blub"></div>
+						<div id="collar"><div id="shadow"></div></div>
+						<div id="neck"></div>
+						<div id="shade"></div>
+						<div id="topbase"></div>
+						<div id="bottombase"></div>
+					</div></button>
+					<button style="top:20px;" onclick="setpawncolor('orange', '#FFA500', '#FF8C00')" title="Click to play with the orange pawn"><div id="orange" class="gamepiece">
+						<div id="blub"></div>
+						<div id="collar"><div id="shadow"></div></div>
+						<div id="neck"></div>
+						<div id="shade"></div>
+						<div id="topbase"></div>
+						<div id="bottombase"></div>
+					</div></button>
+					<button onclick="setpawncolor('yellow', '#FFD700', '#DAA520')" title="Click to play with the yellow pawn"><div id="yellow" class="gamepiece">
+						<div id="blub"></div>
+						<div id="collar"><div id="shadow"></div></div>
+						<div id="neck"></div>
+						<div id="shade"></div>
+						<div id="topbase"></div>
+						<div id="bottombase"></div>
+					</div></button>
+					<button onclick="setpawncolor('green', '#ACE600', '#91C216')" title="Click to play with the green pawn"><div id="green" class="gamepiece">
+						<div id="blub"></div>
+						<div id="collar"><div id="shadow"></div></div>
+						<div id="neck"></div>
+						<div id="shade"></div>
+						<div id="topbase"></div>
+						<div id="bottombase"></div>
+					</div></button>
+					<button style="top:20px;" onclick="setpawncolor('blue', '#00BFFF', '#0086B3')" title="Click to play with the blue pawn"><div id="blue" class="gamepiece">
+						<div id="blub"></div>
+						<div id="collar"><div id="shadow"></div></div>
+						<div id="neck"></div>
+						<div id="shade"></div>
+						<div id="topbase"></div>
+						<div id="bottombase"></div>
+					</div></button>
+					<button style="top:60px;" onclick="setpawncolor('violet', '#ED78ED', '#D55DD1')" title="Click to play with the violet pawn"><div id="violet" class="gamepiece">
+						<div id="blub"></div>
+						<div id="collar"><div id="shadow"></div></div>
+						<div id="neck"></div>
+						<div id="shade"></div>
+						<div id="topbase"></div>
+						<div id="bottombase"></div>
+					</div></button>
+					
+					<p id="hideme" style="margin-top:45px; text-align:center;"><button id="continue" class="colorcont" onclick="pawncolor()">
+						<div id="container">Continue<br>&nbsp;<sup><sup>with&nbsp;&nbsp;</sup></sup><span id="colortype" class="type"></span></div>
+						<div id="colorprompt" class="prompt">&#10095;</div>
+					</button></p>
+				</div>
+			</div>
+		</div>
+		
+		<div id="disclaimer"><h6><em>Vie</em> is a parody of the game mechanics of Hasbro's <em>Monopoly</em>.<br>This is not copyright infringement as "[c]opyright does not protect<br>the idea for a game, its name or title, or the method or methods for playing it"<br>(quoted from <a href="https://www.copyright.gov/fls/fl108.pdf">U.S. Copyright Office FL-108</a>)</h6></div>
+	</section>
+	
+	<section id="game">
+		<!-- Identify whose turn it is -->
+		<div id="turnidentifier">
+			<button>
+				It's<br><span id="user"></span><br>turn!
+			</button>
+		</div>
+		
+		<!-- Game Board -->
+		<div id="board">
+			<!-- Game Pieces -->
+			<div id="player" class="gamepiece" title="Your game piece">
+				<div id="blub"></div>
+				<div id="collar"><div id="shadow"></div></div>
+				<div id="neck"></div>
+				<div id="shade"></div>
+				<div id="topbase"></div>
+				<div id="bottombase"></div>
+			</div>
+			<div id="fortune" class="gamepiece" title="Fortune's game piece">
+				<div id="blub"></div>
+				<div id="collar"><div id="shadow"></div></div>
+				<div id="neck"></div>
+				<div id="shade"></div>
+				<div id="topbase"></div>
+				<div id="bottombase"></div>
+			</div>
+			
+			<!-- Middle of Board -->
+			<div id="middle">
+				<div id="name"><div id="container">
+					<div id="v" style="display:inline-block; -ms-filter:invert(100%); -webkit-filter:invert(100%); -moz-filter:invert(100%); -o-filter:invert(100%); filter:invert(100%):none;"><div id="tuxleft"></div><div id="bow"></div><h1>V</h1><div id="tuxright"></div></div>
+					<h1 style="display:inline-block; margin-left:-100px; color:#000; font-family:Londrina Solid; font-size:130px; font-weight:300; z-index:2;">ie</h1>
+				</div></div>
+			</div>
+			
+			<!-- Game Spaces -->
+			<!-- Position 1 -->
+			<div id="go" class="corner">
+				<div id="text"><sub style="font-size:250px;">G</sub><span style="text-decoration:underline;">o</span></div>
+				<div id="arrow">
+					<div id="arrowhead"></div>
+					<div id="shaft"><div id="upper" class="feathers">&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|</div><div id="lower" class="feathers">&nbsp;&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|</div></div>
+				</div>
+			</div>
+			
+			<div id="bottom" class="side">
+				<!-- Position 2 -->
+				<div id="red1" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Lower Priced Product</div>
+				</div>
+				<!-- Position 3 -->
+				<div id="red2" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Give-Aways</div>
+				</div>
+				<!-- Position 4 -->
+				<div id="red3" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Coupons</div>
+				</div>
+				<!-- Position 5 -->
+				<div id="marketing1" class="marketing space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+					</div>
+					<div id="text">
+						<div id="container">ad</div>&nbsp;vertising
+					</div>
+				</div>
+				<!-- Position 6 -->
+				<div id="orange1" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Website</div>
+				</div>
+				<!-- Position 7 -->
+				<div id="orange2" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Social Media</div>
+				</div>
+				<!-- Position 8 -->
+				<div id="orange3" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Online Database</div>
+				</div>
+			</div>
+			
+			<!-- Position 9 -->
+			<div id="jail" class="corner">
+				<div id="text" class="vertical">JUST</div><div id="text" class="horizontal">VISITING</div>
+				<div id="notvisiting">
+					<div id="text">JAIL</div>
+					<div id="barred"></div><div id="barred"></div><div id="barred"></div><div id="barred"></div>
+				</div>
+			</div>
+			
+			<div id="left" class="side">
+				<!-- Position 10 -->
+				<div id="yellow1" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Full-Time Employees</div>
+				</div>
+				<!-- Position 11 -->
+				<div id="grant" class="space">
+					<div id="text">
+						+&nbsp;$<span id="val1" style="margin-left:7px;"></span>
+					</div>
+				</div>
+				<!-- Position 12 -->
+				<div id="yellow2" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Part-Time Employees</div>
+				</div>
+				<!-- Position 13 -->
+				<div id="marketing2" class="marketing space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+					</div>
+					<div id="text">
+						<div id="container">ad</div>&nbsp;vertising
+					</div>
+				</div>
+				<!-- Position 14 -->
+				<div id="lime1" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Chicago Office</div>
+				</div>
+				<!-- Position 15 -->
+				<div id="lime2" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Silicon Valley Office</div>
+				</div>
+				<!-- Position 16 -->
+				<div id="lime3" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">New York City Office</div>
+				</div>
+			</div>
+			
+			<!-- Position 17 -->
+			<div id="holiday" class="corner"><div id="text"><sub style="font-size:150px;">H</sub><u>olida</u>y</div></div>
+			
+			<div id="top" class="side">
+				<!-- Position 18 -->
+				<div id="green1" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">European Plant</div>
+				</div>
+				<!-- Position 19 -->
+				<div id="green2" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Amercian Plant</div>
+				</div>
+				<!-- Position 20 -->
+				<div id="green3" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Asian Plant</div>
+				</div>
+				<!-- Position 21 -->
+				<div id="marketing3" class="marketing space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+					</div>
+					<div id="text">
+						<div id="container">ad</div>&nbsp;vertising
+					</div>
+				</div>
+				<!-- Position 22 -->
+				<div id="turquoise1" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Workers' Compensation</div>
+				</div>
+				<!-- Position 23 -->
+				<div id="turquoise2" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Product Liability Insurance</div>
+				</div>
+				<!-- Position 24 -->
+				<div id="turquoise3" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Business Interruption Insurance</div>
+				</div>
+			</div>
+			
+			<div id="goto" class="corner"><div id="text"><sub style="font-size:150px;">G</sub><u>o to</u><br><span style="font-size:100px;">JAIL</span></div></div><!-- Position 25 -->
+			
+			<div id="right" class="side">
+				<!-- Position 26 -->
+				<div id="blue1" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Venture Capitalists</div>
+				</div>
+				<!-- Position 27 -->
+				<div id="blue2" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Angel Investors</div>
+				</div>
+				<!-- Position 28 -->
+				<div id="blue3" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Personal Investors</div>
+				</div>
+				<!-- Position 29 -->
+				<div id="marketing4" class="marketing space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+					</div>
+					<div id="text">
+						<div id="container">ad</div>&nbsp;vertising
+					</div>
+				</div>
+				<!-- Position 30 -->
+				<div id="violet1" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Sell Online</div>
+				</div>
+				<!-- Position 31 -->
+				<div id="grant" class="space">
+					<div id="text">
+						+&nbsp;$<span id="val2" style="margin-left:7px;"></span>
+					</div>
+				</div>
+				<!-- Position 32 -->
+				<div id="violet2" class="space">
+					<div id="ownerid">
+						<div id="base" class="marker"></div>
+						<div id="u1" class="marker"></div>
+						<div id="u2" class="marker"></div>
+						<div id="u3" class="marker"></div>
+						<div id="u4" class="marker"></div>
+						<div id="u5" class="marker"></div>
+					</div>
+					<div id="text">Sell in Retail Stores</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Dice (each six-sided) -->
+		<div id="first" class="dice">
+			<div class="one" id="f1"><div id="center" class="dot"></div></div>
+			<div class="two" id="f2"><div id="top" class="dot"></div><div id="bottom" class="dot"></div></div>
+			<div class="three" id="f3"><div id="top" class="dot"></div><div id="center" class="dot"></div><div id="bottom" class="dot"></div></div>
+			<div class="four" id="f4"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+			<div class="five" id="f5"><div class="dot"></div><div class="dot"></div><div id="center" class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+			<div class="six" id="f6"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+		</div>
+		<div id="second" class="dice">
+			<div class="one" id="s1"><div id="center" class="dot"></div></div>
+			<div class="two" id="s2"><div id="top" class="dot"></div><div id="bottom" class="dot"></div></div>
+			<div class="three" id="s3"><div id="top" class="dot"></div><div id="center" class="dot"></div><div id="bottom" class="dot"></div></div>
+			<div class="four" id="s4"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+			<div class="five" id="s5"><div class="dot"></div><div class="dot"></div><div id="center" class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+			<div class="six" id="s6"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+		</div>
+		
+		<!-- Question Card -->
+		<div id="card"><div id="container">
+			<!-- Question Side -->
+			<div id="questionside">
+				<div id="identifierbar">
+					<h3>Question #<span id="qnum"></span> of <span id="total">85</span></h3>
+					<h3 id="qtopic" style="margin-top:-20px; padding-right:300px; text-align:right;"></h3>
+				</div>
+				
+				<!-- Normal Question -->
+				<div id="normq">
+					<div id="normqcontainer"><h1 id="qofnorm"></h1></div>
+						<div id="answercontainer">
+							<div class="choicebtn left" id="luabtn"><div class="letterchoice">A<span style="font-size:25px; font-weight:900;">.</span></div><div class="fullchoice" id="lua"></div></div><!-- Left Upper Answer (A.) -->
+							<div class="choicebtn right" id="ruabtn"><div class="letterchoice">C<span style="font-size:25px; font-weight:900;">.</span></div><div class="fullchoice" id="rua"></div></div><!-- Right Upper Answer (C.) -->
+							<div class="choicebtn left" id="llabtn"><div class="letterchoice">B<span style="font-size:25px; font-weight:900;">.</span></div><div class="fullchoice" id="lla"></div></div><!-- Left Lower Answer (B.) -->
+							<div class="choicebtn right" id="rlabtn"><div class="letterchoice">D<span style="font-size:25px; font-weight:900;">.</span></div><div class="fullchoice" id="rla"></div></div><!-- Right Lower Answer (D.) -->
+						</div>
+				</div>
+				<!-- True or False Question -->
+				<div id="tfq">
+					<h1>True or False:</h1>
+					<div id="tfqcontainer"><h2 id="qoftf"></h2></div>
+						<div id="answercontainer">
+							<div class="choicebtn left" id="tabtn">True</div><!-- True Answer -->
+							<div class="choicebtn right" id="fabtn">False</div><!-- False Answer -->
+						</div>
+				</div>
+				<!-- What is Described Below Question (Mixed Layout) -->
+				<div id="mixedq">
+					<h1>What <span id="qdescriptor"></span> is being described below?</h1>
+					<div id="mixedqcontainer"><h2 id="qofmixed"></h2></div>
+						<div id="answercontainer">
+							<div class="choicebtn left" id="mixedluabtn"><div class="letterchoice">A<span style="font-size:25px; font-weight:900;">.</span></div><div class="fullchoice" id="mixedlua"></div></div><!-- Left Upper Answer (A.) -->
+							<div class="choicebtn right" id="mixedruabtn"><div class="letterchoice">C<span style="font-size:25px; font-weight:900;">.</span></div><div class="fullchoice" id="mixedrua"></div></div><!-- Right Upper Answer (C.) -->
+							<div class="choicebtn left" id="mixedllabtn"><div class="letterchoice">B<span style="font-size:25px; font-weight:900;">.</span></div><div class="fullchoice" id="mixedlla"></div></div><!-- Left Lower Answer (B.) -->
+							<div class="choicebtn right" id="mixedrlabtn"><div class="letterchoice">D<span style="font-size:25px; font-weight:900;">.</span></div><div class="fullchoice" id="mixedrla"></div></div><!-- Right Lower Answer (D.) -->
+						</div>
+				</div>
+			</div>
+			<!-- Identifier Side -->
+			<div id="identifierside">
+				<!-- Correct -->
+				<div id="correct">
+					<div id="identification">
+						<h1><span style="font-size:100px;"><strong>&#10003;</strong></span><br><br>CORRECT</h1>
+					</div>
+				</div>
+				<!-- Incorrect -->
+				<div id="incorrect">
+					<div id="identification">
+						<h1><span style="font-size:100px;"><strong>&#10007;</strong></span><br><br>INCORRECT</h1>
+						<h6 style="color:#730000; text-shadow:none;">The correct answer was <span id="correctletter"></span><span id="multionly"><br>"<span id="correctextended"></span>"</span></h6>
+					</div>
+				</div>
+			</div>
+		</div></div>
+		<!-- Asset owner -->
+		<div id="ownerpaper">
+			<h1 id="ownername"></h1>
+			<h2>own<span id="grammer">s</span> this space</h2>
+		</div>
+		
+		<!-- Show the player how much money they have earned/lost -->
+		<div id="earnings">
+			<div id="moneypaper">
+				<h1>$<span id="money-count1" style="padding-left:8px;">1,500</span><sup style="padding-left:3px; font-size:32px; letter-spacing:3px;">.<span style="letter-spacing:2px; font-weight:900;">00</span></sup></h1>
+			</div>
+			<div id="hiding">
+				<div id="earningspaper">
+					<h1><span id="gain-loss"></span>&nbsp;$<span id="earning-count" style="padding-left:8px;">10,000</span><sup style="padding-left:3px; font-size:32px; letter-spacing:3px;">.<span style="letter-spacing:2px; font-weight:900;">00</span></sup></h1>
+					<h2 id="payinganother">Fortune was paid&nbsp;<span id="topay-money">$<span id="topay-count" style="padding-left:4px;"></span><sup style="padding-left:3px; font-size:15px; letter-spacing:3px;">.<span style="letter-spacing:2px;">00</span></sup></span></h2>
+				</div>
+			</div>
+		</div>
+		<!-- Asset cards (these are the ones the player can buy) -->
+		<div id="tobuy">
+			<!-- Position 2 -->
+			<div id="buy02" class="assetcard">
+				<div id="red" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Lower Priced Product</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">60</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">4</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position02, 'buy02', 'rent02', 'newrent02', 'red1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy02')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 3 -->
+			<div id="buy03" class="assetcard">
+				<div id="red" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Give-Aways</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">60</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">2</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position03, 'buy03', 'rent03', 'newrent03', 'red2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy03')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 4 -->
+			<div id="buy04" class="assetcard">
+				<div id="red" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Coupons</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">60</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">2</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position04, 'buy04', 'rent04', 'newrent04', 'red3')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy04')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 5 -->
+			<div id="buy05" class="assetcard">
+				<div id="marketing" class="heading">
+					<span id="bordering">ad</span>&nbsp;vertising
+				</div>
+				<div id="text">
+					<div id="name"><h1>Online Ads</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">200</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent05">25</span></span></h2>
+					
+					<button id="buythis" onclick="buy_ad(assets.position05, 'buy05', 'marketing1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy05')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 6 -->
+			<div id="buy06" class="assetcard">
+				<div id="orange" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Website</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">100</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">6</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position06, 'buy06', 'rent06', 'newrent06', 'orange1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy06')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 7 -->
+			<div id="buy07" class="assetcard">
+				<div id="orange" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Social Media</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">100</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">6</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position07, 'buy07', 'rent07', 'newrent07', 'orange2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy07')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 8 -->
+			<div id="buy08" class="assetcard">
+				<div id="orange" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Online Database</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">120</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">8</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position08, 'buy08', 'rent08', 'newrent08', 'orange3')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy08')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 10 -->
+			<div id="buy10" class="assetcard">
+				<div id="yellow" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Full-Time Employees</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">160</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">12</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position10, 'buy10', 'rent10', 'newrent10', 'yellow1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy10')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 12 -->
+			<div id="buy12" class="assetcard">
+				<div id="yellow" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Part-Time Employees</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">140</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">10</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position12, 'buy12', 'rent12', 'newrent12', 'yellow2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy12')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 13 -->
+			<div id="buy13" class="assetcard">
+				<div id="marketing" class="heading">
+					<span id="bordering">ad</span>&nbsp;vertising
+				</div>
+				<div id="text">
+					<div id="name"><h1>Email Newsletter</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">200</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent13">25</span></span></h2>
+					
+					<button id="buythis" onclick="buy_ad(assets.position13, 'buy13', 'marketing2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy13')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 14 -->
+			<div id="buy14" class="assetcard">
+				<div id="lime" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Chicago Office</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">180</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">14</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position14, 'buy14', 'rent14', 'newrent14', 'lime1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy14')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 15 -->
+			<div id="buy15" class="assetcard">
+				<div id="lime" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Silicon Valley Office</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">180</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">14</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position15, 'buy15', 'rent15', 'newrent15', 'lime2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy15')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 16 -->
+			<div id="buy16" class="assetcard">
+				<div id="lime" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>New York City Office</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">200</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">16</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position16, 'buy16', 'rent16', 'newrent16', 'lime3')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy16')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 18 -->
+			<div id="buy18" class="assetcard">
+				<div id="green" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>European Plant</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">240</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">20</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position18, 'buy18', 'rent18', 'newrent18', 'green1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy18')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 19 -->
+			<div id="buy19" class="assetcard">
+				<div id="green" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>American Plant</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">220</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">18</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position19, 'buy19', 'rent19', 'newrent19', 'green2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy19')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 20 -->
+			<div id="buy20" class="assetcard">
+				<div id="green" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Asian Plant</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">220</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">18</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position20, 'buy20', 'rent20', 'newrent20', 'green3')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy20')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 21 -->
+			<div id="buy21" class="assetcard">
+				<div id="marketing" class="heading">
+					<span id="bordering">ad</span>&nbsp;vertising
+				</div>
+				<div id="text">
+					<div id="name"><h1>Television <span style="font-size:43px;">Commercials</span></h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">200</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent21">25</span></span></h2>
+					
+					<button id="buythis" onclick="buy_ad(assets.position21, 'buy21', 'marketing3')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy21')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 22 -->
+			<div id="buy22" class="assetcard">
+				<div id="turquoise" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Workers' <span style="font-size:39px;">Compensation</span></h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">260</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">22</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position22, 'buy22', 'rent22', 'newrent22', 'turquoise1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy22')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 23 -->
+			<div id="buy23" class="assetcard">
+				<div id="turquoise" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Product Liability Insurance</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">260</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">22</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position23, 'buy23', 'rent23', 'newrent23', 'turquoise2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy23')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 24 -->
+			<div id="buy24" class="assetcard">
+				<div id="turquoise" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Business <span style="font-size:45px;">Interruption</span> Insurance</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">280</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">24</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position24, 'buy24', 'rent24', 'newrent24', 'turquoise3')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy24')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 26 -->
+			<div id="buy26" class="assetcard">
+				<div id="blue" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Venture Capitalists</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">320</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">28</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position26, 'buy26', 'rent26', 'newrent26', 'blue1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy26')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 27 -->
+			<div id="buy27" class="assetcard">
+				<div id="blue" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Angel Investors</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">300</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">26</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position27, 'buy27', 'rent27', 'newrent27', 'blue2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy27')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 28 -->
+			<div id="buy28" class="assetcard">
+				<div id="blue" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Personal Investors</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">300</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">26</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position28, 'buy28', 'rent28', 'newrent28', 'blue3')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy28')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 29 -->
+			<div id="buy29" class="assetcard">
+				<div id="marketing" class="heading">
+					<span id="bordering">ad</span>&nbsp;vertising
+				</div>
+				<div id="text">
+					<div id="name"><h1>Billboard Ads</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">200</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent29">25</span></span></h2>
+					
+					<button id="buythis" onclick="buy_ad(assets.position29, 'buy29', 'marketing4')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy29')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 30 -->
+			<div id="buy30" class="assetcard">
+				<div id="violet" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Sell Online</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">350</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">35</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position30, 'buy30', 'rent30', 'newrent30', 'violet1')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy30')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			<!-- Position 32 -->
+			<div id="buy32" class="assetcard">
+				<div id="violet" class="heading"></div>
+				<div id="text">
+					<div id="name"><h1>Sell in Retail Stores</h1></div>
+					<h2>Cost to Buy: <span id="money">$<span id="cost">400</span></span></h2>
+					
+					<h2>Rent: <span id="money">$<span id="rent">50</span></span></h2>
+					
+					<button id="buythis" onclick="buy(assets.position32, 'buy32', 'rent32', 'newrent32', 'violet2')">Buy<div id="aniunderline"></div></button><button id="pass" onclick="pass('buy32')">Pass<div id="aniunderline"></div></button>
+				</div>
+			</div>
+			
+			<!-- Grants (Positions 17 and 31) -->
+			<div id="grantcard">
+				<div id="text">
+					<h3>You Got a</h3>
+					<h2>Grant!</h2>
+					
+					<h1>+$<span id="grantmoney"></span></h1>
+					
+					<p style="text-align:center;"><button id="acceptgrant" onclick="pass('grantcard')">Accept<div id="aniunderline"></div></button></p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Player can see what Fortune (NPC/AI) is doing throughout the turn -->
+		<div id="actionwindow">
+			<div id="actions"></div>
+		</div>
+		
+		<!-- Pay to get out of jail -->
+		<div id="getout">
+			<h1>You can pay <span style="font-family:Special Elite; font-weight:900;">$50</span><br>to get out of jail.</h1>
+			<h2>
+				Would you like to pay to get out of jail?
+				<br>
+				If not, you can still try to roll doubles to get out.
+			</h2>
+			
+			<p style="text-align:center;"><button id="pay">Pay <span style="font-family:Special Elite; font-weight:900;">$50</span><div id="aniunderline"></div></button><button id="roll">Roll the Dice<div id="aniunderline"></div></button></p>
+		</div>
+		
+		<!-- Exit for when the player is viewing the board (in between Fortune's turn and their turn) -->
+		<button id="movingexit" onclick="exitmoving()">&times;</button>
+		
+		<!-- Player Space -->
+		<div id="playerspace">
+			<!-- "Sticky Notes" -->
+			<div id="menunote" class="stickynote tiltleft" onclick="openMenu()"><span style="font-size:35px;">&#9776;</span> menu</div>
+			<div id="viewnote" class="stickynote tiltright" onclick="viewBoard()">View Board</div>
+			
+			<!-- Dice to start turn -->
+			<div id="startingdice">
+				<div id="dice" class="first" onclick="resettomove()" title="Click to roll the dice"><div id="four"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+				<div id="dice" class="second" onclick="resettomove()" title="Click to roll the dice"><div id="three"><div id="top" class="dot"></div><div id="center" class="dot"></div><div id="bottom" class="dot"></div></div></div>
+			</div>
+			
+			<!-- Money Papers -->
+			<div id="accountingpaper" class="moneydisplay">
+				<h2>Your Money:</h2>
+				<h1>$<span id="money-count2" style="padding-left:8px;">1,500</span><sup style="padding-left:3px; font-size:32px; letter-spacing:3px;">.<span style="letter-spacing:2px; font-weight:900;">00</span></sup></h1>
+			</div>
+			<div id="aipaper" class="moneydisplay">
+				<h2>Fortune's Money:</h2>
+				<h1>$<span id="ai-money-count" style="padding-left:8px;">1,500</span><sup style="padding-left:3px; font-size:32px; letter-spacing:3px;">.<span style="letter-spacing:2px; font-weight:900;">00</span></sup></h1>
+			</div>
+			
+			<!-- List of assets that Fortune owns -->
+			<div id="aiassets">
+				<h2>Fortune's Assets:</h2>
+				
+				<div id="scrolling">
+					<ul style="list-style-type:none;">
+						<li id="ai-red">Red Assets:
+							<ul style="list-style-type:disc;">
+								<span id="redassests"></span>
+							</ul>
+						</li>
+						<li id="ai-orange">Orange Assets:
+							<ul style="list-style-type:disc;">
+								<span id="orangeassests"></span>
+							</ul>
+						</li>
+						<li id="ai-yellow">Yellow Assets:
+							<ul style="list-style-type:disc;">
+								<span id="yellowassests"></span>
+							</ul>
+						</li>
+						<li id="ai-lime">Lime Assets:
+							<ul style="list-style-type:disc;">
+								<span id="limeassests"></span>
+							</ul>
+						</li>
+						<li id="ai-green">Green Assets:
+							<ul style="list-style-type:disc;">
+								<span id="greenassests"></span>
+							</ul>
+						</li>
+						<li id="ai-turquoise">Turquoise Assets:
+							<ul style="list-style-type:disc;">
+								<span id="turquoiseassests"></span>
+							</ul>
+						</li>
+						<li id="ai-blue">Blue Assets:
+							<ul style="list-style-type:disc;">
+								<span id="blueassests"></span>
+							</ul>
+						</li>
+						<li id="ai-violet">Violet Assets:
+							<ul style="list-style-type:disc;">
+								<span id="violetassests"></span>
+							</ul>
+						</li>
+						<li id="ai-ad">Advertising Assets:
+							<ul style="list-style-type:disc;">
+								<span id="adassests"></span>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- Asset cards (these are the ones that the player owns) -->
+			<div id="container">
+				<!-- Position 2 -->
+				<div id="p02" class="assetcard">
+					<div id="red" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Lower Priced Product</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent02"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">50</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent02"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 3 -->
+				<div id="p03" class="assetcard">
+					<div id="red" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Give-Aways</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent03"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">50</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent03"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 4 -->
+				<div id="p04" class="assetcard">
+					<div id="red" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Coupons</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent04"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">50</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent04"></span></span></h3>
+					</div>
+				</div>
+				
+				<br>
+				
+				<!-- Position 6 -->
+				<div id="p06" class="assetcard">
+					<div id="orange" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Website</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent06"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">50</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent06"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 7 -->
+				<div id="p07" class="assetcard">
+					<div id="orange" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Social Media</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent07"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">50</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent07"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 8 -->
+				<div id="p08" class="assetcard">
+					<div id="orange" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Online Database</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent08"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">50</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent08"></span></span></h3>
+					</div>
+				</div>
+				
+				<br>
+				
+				<!-- Position 10 -->
+				<div id="p10" class="assetcard">
+					<div id="yellow" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Full-Time Employees</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent10"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">100</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent10"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 12 -->
+				<div id="p12" class="assetcard">
+					<div id="yellow" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Part-Time Employees</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent12"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">100</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent12"></span></span></h3>
+					</div>
+				</div>
+				
+				<br>
+				
+				<!-- Position 14 -->
+				<div id="p14" class="assetcard">
+					<div id="lime" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Chicago Office</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent14"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">100</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent14"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 15 -->
+				<div id="p15" class="assetcard">
+					<div id="lime" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Silicon Valley Office</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent15"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">100</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent15"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 16 -->
+				<div id="p16" class="assetcard">
+					<div id="lime" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>New York City Office</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent16"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">100</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent16"></span></span></h3>
+					</div>
+				</div>
+				
+				<br>
+				
+				<!-- Position 18 -->
+				<div id="p18" class="assetcard">
+					<div id="green" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>European Plant</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent18"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">150</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent18"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 19 -->
+				<div id="p19" class="assetcard">
+					<div id="green" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>American Plant</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent19"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">150</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent19"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 20 -->
+				<div id="p20" class="assetcard">
+					<div id="green" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Asian Plant</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent20"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">150</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent20"></span></span></h3>
+					</div>
+				</div>
+				
+				<br>
+				
+				<!-- Position 22 -->
+				<div id="p22" class="assetcard">
+					<div id="turquoise" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Workers' <span style="font-size:39px;">Compensation</span></h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent22"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">150</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent22"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 23 -->
+				<div id="p23" class="assetcard">
+					<div id="turquoise" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Product Liability Insurance</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent23"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">150</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent23"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 24 -->
+				<div id="p24" class="assetcard">
+					<div id="turquoise" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Business <span style="font-size:45px;">Interruption</span> Insurance</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent24"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">150</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent24"></span></span></h3>
+					</div>
+				</div>
+				
+				<br>
+				
+				<!-- Position 26 -->
+				<div id="p26" class="assetcard">
+					<div id="blue" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Venture Capitalists</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent26"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">200</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent26"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 27 -->
+				<div id="p27" class="assetcard">
+					<div id="blue" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Angel Investors</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent27"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">200</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent27"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 28 -->
+				<div id="p28" class="assetcard">
+					<div id="blue" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Personal Investors</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent28"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">200</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent28"></span></span></h3>
+					</div>
+				</div>
+				
+				<br>
+				
+				<!-- Position 30 -->
+				<div id="p30" class="assetcard">
+					<div id="violet" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Sell Online</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent30"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">200</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent30"></span></span></h3>
+					</div>
+				</div>
+				<!-- Position 32 -->
+				<div id="p32" class="assetcard">
+					<div id="violet" class="heading"></div>
+					<div id="text">
+						<div id="name"><h1>Sell in Retail Stores</h1></div>
+						<h2>Current Rent: <span id="money">$<span id="rent32"></span></span></h2>
+						
+						<h2 id="costtoupgrade">Cost to Upgrade: <span id="money">$<span id="upgradecost">200</span></span></h2>
+						
+						<h3>Rent if Upgraded: <span id="money">$<span id="newrent32"></span></span></h3>
+					</div>
+				</div>
+				
+				<br>
+				<br>
+				
+				<!-- Position 5 -->
+				<div id="p05" class="assetcard">
+					<div id="marketing" class="heading">
+						<span id="bordering">ad</span>&nbsp;vertising
+					</div>
+					<div id="text">
+						<div id="name"><h1>Online Ads</h1></div>
+						<h2>Rent: <span id="money">$<span id="rentm05"></span></span></h2>
+					</div>
+				</div>
+				<!-- Position 13 -->
+				<div id="p13" class="assetcard">
+					<div id="marketing" class="heading">
+						<span id="bordering">ad</span>&nbsp;vertising
+					</div>
+					<div id="text">
+						<div id="name"><h1>Email Newsletter</h1></div>
+						<h2>Rent: <span id="money">$<span id="rentm13"></span></span></h2>
+					</div>
+				</div>
+				<br>
+				<!-- Position 21 -->
+				<div id="p21" class="assetcard">
+					<div id="marketing" class="heading">
+						<span id="bordering">ad</span>&nbsp;vertising
+					</div>
+					<div id="text">
+						<div id="name"><h1>Television <span style="font-size:43px;">Commercials</span></h1></div>
+						<h2>Rent: <span id="money">$<span id="rentm21"></span></span></h2>
+					</div>
+				</div>
+				<!-- Position 29 -->
+				<div id="p29" class="assetcard">
+					<div id="marketing" class="heading">
+						<span id="bordering">ad</span>&nbsp;vertising
+					</div>
+					<div id="text">
+						<div id="name"><h1>Billboard Ads</h1></div>
+						<h2>Rent: <span id="money">$<span id="rentm29"></span></span></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="menu">
+			<div id="gamebox">
+				<div id="boxcover">
+					<div id="front">
+						<div id="designs">
+							<div id="v"><div id="tuxleft"></div><div id="bow"></div><h1>V</h1><div id="tuxright"></div></div>
+							<h1 style="display:inline-block; margin-left:-100px; color:#FFFFFF; font-family:Londrina Solid; font-size:130px; font-weight:300; z-index:2;">ie</h1>
+					
+							<div id="side">
+								The amazing<br>online board<br>game where<br><span style="font-size:27px; font-weight:900; letter-spacing:2px;">capitalism</span><br>comes to life!
+							</div>
+						</div>
+					</div>
+					<div id="side1">
+						<div id="information">
+							<div id="description">
+								<div id="container">
+									<button onclick="closeMenu()">RESUME<div id="aniunderline"></div></button>
+									<button onclick="quit()">QUIT<div id="aniunderline"></div></button>
+						
+									<button id="shortcuts" onclick="openShortcuts()">SHORTCUTS<div id="aniunderline"></div></button>
+								</div>
+							</div>
+							<div id="fakebarcode">fbla</div>
+						</div>
+					</div>
+					<div id="side2"></div>
+					<div id="shadow"></div>
+				</div>
+				<div id="pamphlet" onclick="instructions()">
+					<div id="cover">
+						<div id="designs">
+							RULEBOOK
+						</div>
+					</div>
+					<div id="page1" class="page"></div>
+					<div id="page2" class="page"></div>
+				</div>
+			</div>
+			
+			<div id="disclaimer"><h6><em>Vie</em> is a parody of the game mechanics of Hasbro's <em>Monopoly</em>.<br>This is not copyright infringement as "[c]opyright does not protect<br>the idea for a game, its name or title, or the method or methods for playing it"<br>(quoted from <a href="https://www.copyright.gov/fls/fl108.pdf">U.S. Copyright Office FL-108</a>)</h6></div>
+		</div>
+	</section>
+		
+	<!-- Game outcome displays -->
+	<div id="bankruptcy">
+		<div id="starter"></div>
+		<div id="textb">BANKRUPT</div>
+	</div>
+	<div id="youwin">
+		<div id="starter"></div>
+		<div id="textw">WON</div>
+	</div>
+	
+	<!-- Credits -->
+	<div id="credits">
+		<div id="c1" class="card">
+			<div id="heading">
+				Created<br>by
+			</div>
+			<div id="text">
+				<div id="name"><h1>Jessica "Jess" Roginski</h1></div>
+			</div>
+		</div>
+		
+		<div id="c2" class="card">
+			<div id="heading">
+				HTML & CSS<br>Programmer
+			</div>
+			<div id="text">
+				<div id="name"><h1>Jessica "Jess" Roginski</h1></div>
+			</div>
+		</div>
+		
+		<div id="c3" class="card">
+			<div id="heading">
+				JavaScript<br>Programmer
+			</div>
+			<div id="text">
+				<div id="name"><h1>Jessica "Jess" Roginski</h1></div>
+			</div>
+		</div>
+		
+		<div id="c4" class="card">
+			<div id="heading">
+				Question<br>Maker
+			</div>
+			<div id="text">
+				<div id="name"><h1>Jessica "Jess" Roginski</h1></div>
+			</div>
+		</div>
+		
+		<div id="dedication" class="card">
+			<div id="heading">
+				To
+			</div>
+			<div id="text">
+				<div id="name"><h1>my Uncle Jonathan</h1></div>
+				<h3>Who was the Monopoly Banker<br>that gave me the ideas<br>rather than the Monopoly money<br>that set me off into this game's journey</h3>
+			</div>
+		</div>
+		
+		<div id="thanks">
+			<h1>Thank You</h1>
+			<h2>for <sub style="font-size:90px; font-weight:800;"><sub>Playing!</sub></sub></h2>
+		</div>
+	</div>
+
+<script>
+	/* Since the version was set on a different .html file, it was reset when it redirested to the current .html file */
+	version = "singleplayer";
+	users.player1.call = "You";
+	users.player1.nickname = "";
+	users.player1.id = "player";
+	
+	/* Detect if the user is viewing this page on a mobile device */
+	if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+		document.getElementById("mobile").style.display = "block";
+	} else {
+		if (screen.width <= 1260 || screen.height <= 625) {
+			document.getElementById("swidth").innerHTML = screen.width;
+			document.getElementById("sheight").innerHTML = screen.height;
+		} else {
+			document.getElementById("saywhat").innerHTML = "Please resize your browser to enjoy this game to the fullest!";
+		}
+		
+		if (navigator.onLine == true) {
+			document.getElementById("online").style.display = "flex";
+		} else {
+			unboxed();
+		}
+	}
+</script>
+
+</body>
+
+</html>
